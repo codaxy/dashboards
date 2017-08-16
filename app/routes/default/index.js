@@ -1,0 +1,174 @@
+import {DragSource, DropZone, HtmlElement, Repeater, Button, FlexCol, FlexRow, DragHandle, Window} from 'cx/widgets';
+import {Controller} from 'cx/ui';
+import {reorder} from './reorder';
+import {insertElement} from './insertElement';
+
+class PageControlller extends Controller {
+    onInit() {
+        this.store.init('rows', Array.from({length: 5}, (_, i) => ({
+            id: i,
+            widgets: []
+        })));
+
+        this.store.set('widgets', [{
+            style: {
+                background: 'red',
+                height: '100px',
+                width: '200px'
+            }
+        }, {
+            style: {
+                background: 'green',
+                height: '100px',
+                width: '100px'
+            }
+        }, {
+            style: {
+                background: 'orange',
+                height: '100px',
+                width: '150px'
+            }
+        }]);
+    }
+
+    addRow() {
+        this.store.update('rows', rows => [...rows, {
+            id: rows.length,
+            widgets: []
+        }]);
+    }
+}
+
+const createOnWidgetDrop = (getIndex) => (e, {store}) => {
+    let {index, rowIndex, widget} = e.source.data;
+    let newEl = {...widget};
+    if (index == -1)
+        store.update('$record.widgets', insertElement, getIndex(store), newEl);
+    else if (rowIndex == store.get('$rowIndex'))
+        store.update('$record.widgets', reorder, index, getIndex(store));
+    else {
+        e.source.store.update('$record.widgets', items => items.filter(item => item != widget));
+        store.update('$record.widgets', insertElement, getIndex(store), newEl);
+    }
+};
+
+const Row = <cx>
+    <DragSource
+        class="row"
+        data={{type: 'row', index: {bind: "$rowIndex"}}}
+        hideOnDrag
+    >
+        <FlexRow style="min-height: 150px" hspacing="large">
+            <Repeater
+                records:bind="$record.widgets"
+                recordAlias="$widget"
+            >
+                <DropZone mod="box"
+                    class="drop"
+                    onDropTest={e => e.source.data.type == 'widget'}
+                    onDrop={createOnWidgetDrop(store => store.get('$index'))}
+                    matchWidth
+                    matchHeight
+                    matchMargin
+                    inflate={100}
+                />
+                <DragSource
+                    data={{
+                        type: 'widget',
+                        rowIndex: {bind: '$rowIndex'},
+                        widget: {bind: '$widget'},
+                        index: {bind: "$index"}
+                    }}
+                    hideOnDrag
+                    class="box"
+                >
+                    <div style:bind="$widget.style"/>
+                </DragSource>
+            </Repeater>
+
+            <DropZone
+                mod="box"
+                class="drop last"
+                onDropTest={e => e.source.data.type == 'widget'}
+                onDrop={createOnWidgetDrop(store => -1)}
+                matchWidth
+                //matchHeight
+                //matchMargin
+                inflate={100}
+            />
+
+            <DragHandle style="background:rgba(255, 255, 255, 0.5);width: 20px; cursor: move"/>
+
+        </FlexRow>
+    </DragSource>
+</cx>
+
+export default <cx>
+    <div putInto="aside">
+
+    </div>
+
+    <h2 putInto="header">Dashboard</h2>
+
+    <Button mod="hollow" putInto="tools" onClick={(e, {store}) => { store.toggle('$page.add')}}>
+        Add
+    </Button>
+
+    <Window
+        title="Add Widget"
+        visible:bind="$page.add"
+        bodyStyle="max-width: 500px; max-height: 500px"
+    >
+        <FlexRow padding spacing="large" wrap>
+            <Repeater records:bind="widgets">
+                <DragSource
+                    data={{
+                        type: 'widget',
+                        widget: {bind: '$record'},
+                        index: -1,
+                        rowIndex: -1
+                    }}
+                    style:bind="$record.style"
+                    onDragStart={(e, source) => {
+                        console.log('Drag start');
+                    }}
+                />
+            </Repeater>
+        </FlexRow>
+    </Window>
+
+    <div controller={PageControlller}>
+        <DropZone
+            mod="block"
+            onDropTest={e => e.source.data.type == 'row'}
+            onDrop={(e, {store}) => {
+                store.update('rows', reorder, e.source.data.index, 0);
+            }}
+            matchHeight
+            matchMargin
+            inflate={300}
+        >
+        </DropZone>
+        <Repeater
+            records:bind="rows"
+            keyField="id"
+            indexAlias="$rowIndex"
+        >
+            {Row}
+            <DropZone mod="block"
+                onDropTest={e => e.source.data.type == 'row'}
+                onDrop={(e, {store}) => {
+                    store.update('rows', reorder, e.source.data.index, store.get('$rowIndex') + 1);
+                }}
+                matchHeight
+                //matchMargin
+                inflate={300}
+            >
+            </DropZone>
+        </Repeater>
+        <br/>
+        <Button onClick="addRow">Add Row</Button>
+    </div>
+
+</cx>;
+
