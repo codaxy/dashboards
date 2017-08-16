@@ -1,14 +1,18 @@
 .kpi-header {
    margin: 0 0 10px 0;
    text-align: center;
-   text-transform: uppercase;
+   //text-transform: uppercase;
 }
 
 .kpi-footer {
    margin-top: 10px;
    text-align: center;
-   text-transform: uppercase;
+   //text-transform: uppercase;
    color: gray;
+
+   a {
+      color: inherit;
+   }
 }
 
 .kpi-main {

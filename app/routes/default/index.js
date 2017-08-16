@@ -2,6 +2,8 @@ import {DragSource, DropZone, HtmlElement, Repeater, Button, FlexCol, FlexRow, D
 import {Controller} from 'cx/ui';
 import {reorder} from './reorder';
 import {insertElement} from './insertElement';
+import DashboardWidget from '../../components/DashboardWidget';
+import { getWidgetTypes } from '../../widgets';
 
 class PageControlller extends Controller {
     onInit() {
@@ -10,25 +12,7 @@ class PageControlller extends Controller {
             widgets: []
         })));
 
-        this.store.set('widgets', [{
-            style: {
-                background: 'red',
-                height: '100px',
-                width: '200px'
-            }
-        }, {
-            style: {
-                background: 'green',
-                height: '100px',
-                width: '100px'
-            }
-        }, {
-            style: {
-                background: 'orange',
-                height: '100px',
-                width: '150px'
-            }
-        }]);
+        this.store.set('widgets', getWidgetTypes().map(type =>({ type })));
     }
 
     addRow() {
@@ -82,7 +66,7 @@ const Row = <cx>
                     hideOnDrag
                     class="box"
                 >
-                    <div style:bind="$widget.style"/>
+                    <DashboardWidget type:bind="$widget.type" props:bind="$widget.props" />
                 </DragSource>
             </Repeater>
 
@@ -122,17 +106,19 @@ export default <cx>
         <FlexRow padding spacing="large" wrap>
             <Repeater records:bind="widgets">
                 <DragSource
+                    class="box"
                     data={{
                         type: 'widget',
                         widget: {bind: '$record'},
                         index: -1,
                         rowIndex: -1
                     }}
-                    style:bind="$record.style"
                     onDragStart={(e, source) => {
                         console.log('Drag start');
                     }}
-                />
+                >
+                    <DashboardWidget type:bind="$record.type" />
+                </DragSource>
             </Repeater>
         </FlexRow>
     </Window>

@@ -14,6 +14,7 @@
   min-width: 200px;
   min-height: 100px;
   padding: 5px;
+  cursor: move;
 }
 
 .drop {
@@ -31,6 +32,7 @@
   margin-left: -1px;
   align-self: stretch;
   min-height: 100px;
+  transition: background 0.5s;
 
   &.cxs-over {
     //position: relative;
