@@ -9,7 +9,7 @@ export default (props = defaultProps) => <cx>
         <div class="kpi-header">
             BTC Price
         </div>
-        <div class="kpi-main" style="text-align: right">
+        <div class="kpi-main">
             <div
                 class="kpi-value"
                 text:tpl="{btcPrice:currency;;0}"

@@ -2,6 +2,10 @@ $header-color: #a73232;
 $aside-width: 260px;
 $small-device-width: 800px;
 
+body {
+   overflow-x: hidden;
+}
+
 #app, .layout {
    height: 100%;
 }
@@ -19,18 +23,18 @@ $small-device-width: 800px;
    align-items: center;
 
    h2 {
-      line-height: 1;
-      font-size: 1.5rem;
+      line-height: 1.4;
+      font-size: 20px;
       margin: 0;
       //color: white;
    }
 
    .layout.nav & {
       transform: translateX($aside-width);
-      @media screen and (min-width: $small-device-width) {
-         left: $aside-width;
-         transform: none;
-      }
+      //@media screen and (min-width: $small-device-width) {
+      //   left: $aside-width;
+      //   transform: none;
+      //}
    }
 }
 
@@ -87,10 +91,10 @@ $small-device-width: 800px;
 
    .layout.nav & {
       transform: translateX($aside-width);
-      @media screen and (min-width: $small-device-width) {
-         margin-left: $aside-width;
-         transform: none;
-      }
+      //@media screen and (min-width: $small-device-width) {
+      //   margin-left: $aside-width;
+      //   transform: none;
+      //}
    }
 }
 

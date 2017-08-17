@@ -1,0 +1,19 @@
+Widgets:
+- watch StackOverflow tag
+- USD/EUR price
+- weather
+- conferences
+- concerts
+- BitCoin lending rate
+- news
+- scores
+- notes
+- read later list
+- google search
+- todo list
+- currency calculator
+
+Layout:
+- free floating widgets
+- predefined grid
+

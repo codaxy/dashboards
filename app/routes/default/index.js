@@ -42,7 +42,7 @@ const Row = <cx>
         data={{type: 'row', index: {bind: "$rowIndex"}}}
         hideOnDrag
     >
-        <FlexRow style="min-height: 150px" hspacing="large">
+        <FlexRow style="min-height: 150px">
             <Repeater
                 records:bind="$record.widgets"
                 recordAlias="$widget"
@@ -54,7 +54,7 @@ const Row = <cx>
                     matchWidth
                     matchHeight
                     matchMargin
-                    inflate={100}
+                    hinflate={100}
                 />
                 <DragSource
                     data={{
@@ -78,7 +78,7 @@ const Row = <cx>
                 matchWidth
                 //matchHeight
                 //matchMargin
-                inflate={100}
+                hinflate={100}
             />
 
             <DragHandle style="background:rgba(255, 255, 255, 0.5);width: 20px; cursor: move"/>
@@ -101,10 +101,13 @@ export default <cx>
     <Window
         title="Add Widget"
         visible:bind="$page.add"
-        bodyStyle="max-width: 500px; max-height: 500px"
+        style="width: 90vw; height: 80vh"
+        center
+        modal
     >
         <FlexRow padding spacing="large" wrap>
             <Repeater records:bind="widgets">
+                <div class="gallery">
                 <DragSource
                     class="box"
                     data={{
@@ -113,12 +116,17 @@ export default <cx>
                         index: -1,
                         rowIndex: -1
                     }}
-                    onDragStart={(e, source) => {
-                        console.log('Drag start');
+                    onDragStart={(e, {store}) => {
+                        store.set('$page.add', false);
+                    }}
+                    onDragEnd={(e, {store}) => {
+                        store.set('$page.add', true);
                     }}
                 >
                     <DashboardWidget type:bind="$record.type" />
+
                 </DragSource>
+                </div>
             </Repeater>
         </FlexRow>
     </Window>
