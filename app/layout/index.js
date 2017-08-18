@@ -39,6 +39,11 @@ export default <cx>
                     </Link>
                 </dd>
                 <dd>
+                    <Link href="~/grid" url:bind="url">
+                        Grid
+                    </Link>
+                </dd>
+                <dd>
                     <Link href="~/dashboard" url:bind="url">
                         Dashboard
                     </Link>

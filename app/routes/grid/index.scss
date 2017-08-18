@@ -1,0 +1,18 @@
+
+.grid-cell {
+  border: 1px solid lightgray;
+}
+
+.cxb-dropzone.cxm-cell {
+  background: transparent;
+  transition: background 0.5s;
+
+  &.cxs-over {
+    background: white;
+  }
+}
+
+.widget-cell {
+  background: white;
+  box-shadow: 0 0 2px rgba(black, 0.1);
+}
