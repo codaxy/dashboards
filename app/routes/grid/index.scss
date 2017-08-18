@@ -15,4 +15,39 @@
 .widget-cell {
   background: white;
   box-shadow: 0 0 2px rgba(black, 0.1);
+  margin: 1px;
+  cursor: move;
+}
+
+.cxb-dragclone {
+  opacity: 0.7;
+}
+
+.drawer {
+  background: lightsteelblue;
+  margin: -10px -15px 5px;
+  padding: 5px;
+  box-shadow: 0 1px 2px rgba(black, 0.5);
+  animation: slideIn 0.3s;
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  & ~ * {
+    margin-top: 250px;
+  }
+}
+
+.cxb-gridlayout {
+  transition: margin-top 0.3s;
+}
+
+@keyframes slideIn {
+  from {
+    top: -400px;
+  }
+
+  to {
+    top: 0;
+  }
 }

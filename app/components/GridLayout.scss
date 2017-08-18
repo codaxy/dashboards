@@ -7,4 +7,11 @@
 
 .cxe-gridlayout-grid {
   display: grid;
+  background: rgba(white, 0.3);
+  box-shadow: 0 0 2px rgba(black, 0.2);
+}
+
+.cxe-gridlayout-drop-marker {
+  margin: 5px;
+  background: white;
 }

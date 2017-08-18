@@ -2,50 +2,33 @@ import {DragSource, DropZone, HtmlElement, Repeater, PureContainer, Button, Flex
 import {Controller} from 'cx/ui';
 import DashboardWidget from '../../components/DashboardWidget';
 import {GridLayout} from '../../components/GridLayout';
-import {getWidgetTypes} from '../../widgets';
+import {getWidgetTypeProps} from '../../widgets';
 
 class PageControlller extends Controller {
     onInit() {
-        this.store.init('grid', Array.from({length: 5}, (_, i) => ({
-            id: i,
-            widgets: Array.from({length: 10}, (_, j) => ({
-                row: i,
-                column: j
-            }))
-        })));
+        this.store.init('grid', []);
 
-        this.store.set('widgets', getWidgetTypes().map(type => ({type})));
+        this.store.set('widgets', getWidgetTypeProps());
     }
 
-    onWidgetDropped(e, {store}) {
+    onWidgetDrop(e, {store}, size) {
         store.set('dropped', true);
-        store.update('$widget', w => ({
-            ...w,
-            ...e.source.data.widget
-        }))
+        store.update('grid', grid => [
+            ...grid,
+            {
+                ...e.source.data.widget,
+                rect: size
+            }
+        ])
     }
 }
-
-const createOnWidgetDrop = (getIndex) => (e, {store}) => {
-    let {index, rowIndex, widget} = e.source.data;
-    let newEl = {...widget};
-    if (index == -1)
-        store.update('$record.widgets', insertElement, getIndex(store), newEl);
-    else if (rowIndex == store.get('$rowIndex'))
-        store.update('$record.widgets', reorder, index, getIndex(store));
-    else {
-        e.source.store.update('$record.widgets', items => items.filter(item => item != widget));
-        store.update('$record.widgets', insertElement, getIndex(store), newEl);
-    }
-};
-
 
 export default <cx>
     <h2 putInto="header">Grid Based Dashboard</h2>
 
     <div
         visible:bind="$page.add"
-        style="overflox-x: auto"
+        class="drawer"
     >
         <FlexRow padding spacing="large">
             <Repeater records:bind="widgets">
@@ -72,37 +55,35 @@ export default <cx>
 
 
     <PureContainer controller={PageControlller}>
-        <GridLayout rows={5} columns={10}>
-            <Repeater records:bind="grid">
-                <Repeater records:bind="$record.widgets" recordAlias="$widget">
-                    <DropZone
-                        visible:expr="!{$widget.type}"
-                        mod="cell"
-                        onDropTest={e => e.source.data.type == 'widget'}
-                        onDrop="onWidgetDropped"
+        <GridLayout
+            rows={20}
+            columns={40}
+            onDrop="onWidgetDrop"
+        >
+            <Repeater records:bind="grid" recordAlias="$widget">
+                <DragSource
+                    class="widget-cell"
+                    style={{
+                        gridArea: {tpl: '{[{$widget.rect.row} + 1]} / {[{$widget.rect.col} + 1]} / span {$widget.rect.height} / span {$widget.rect.width}'}
+                    }}
+                    visible:expr="{$widget.type}"
+                    data={{
+                        type: 'widget',
+                        widget: {bind: '$widget'}
+                    }}
+                    onDragStart={(e, {store}) => {
+                        store.set('dropped', false)
+                    }}
+                    onDragEnd={(e, {store}) => {
+                        if (store.get('dropped'))
+                            store.delete('$widget');
+                    }}
+                >
+                    <DashboardWidget
+                        type:bind="$widget.type"
+                        props:bind="$widget.props"
                     />
-                    <DragSource
-                        class="widget-cell"
-                        visible:expr="{$widget.type}"
-                        data={{
-                            type: 'widget',
-                            widget: {bind: '$widget'}
-                        }}
-                        onDragStart={(e, {store}) => {
-                            store.set('dropped', false)
-                        }}
-                        onDragEnd={(e, {store}) => {
-                            if (store.get('dropped')) {
-                                store.delete('$widget.type');
-                                store.delete('$widget.props');
-                            }
-                        }}
-                    >
-                        <DashboardWidget
-                            type:bind="$widget.type" props:bind="$widget.props"
-                        />
-                    </DragSource>
-                </Repeater>
+                </DragSource>
             </Repeater>
         </GridLayout>
     </PureContainer>
