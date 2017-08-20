@@ -1,4 +1,4 @@
-import {DragSource, DropZone, HtmlElement, Repeater, PureContainer, Button, FlexRow, Window} from 'cx/widgets';
+import {DragSource, Repeater, PureContainer, Button, FlexRow, FlexCol} from 'cx/widgets';
 import {Controller} from 'cx/ui';
 import DashboardWidget from '../../components/DashboardWidget';
 import {GridLayout} from '../../components/GridLayout';
@@ -17,7 +17,7 @@ class PageControlller extends Controller {
             ...grid,
             {
                 ...e.source.data.widget,
-                rect: size
+                box: size
             }
         ])
     }
@@ -26,66 +26,70 @@ class PageControlller extends Controller {
 export default <cx>
     <h2 putInto="header">Grid Based Dashboard</h2>
 
-    <div
-        visible:bind="$page.add"
-        class="drawer"
-    >
-        <FlexRow padding spacing="large">
-            <Repeater records:bind="widgets">
-                <div class="gallery">
+    <FlexCol style="height: 100%">
+
+        <div
+            visible:bind="$page.add"
+            class="drawer"
+        >
+            <FlexRow padding spacing="large">
+                <Repeater records:bind="widgets">
+                    <div class="gallery">
+                        <DragSource
+                            class:tpl="widget-cell {$record.box.class}"
+                            data={{
+                                type: 'widget',
+                                widget: {bind: '$record'}
+                            }}
+                        >
+                            <DashboardWidget type:bind="$record.type"/>
+                        </DragSource>
+                    </div>
+                </Repeater>
+            </FlexRow>
+        </div>
+
+        <Button mod="hollow" putInto="tools" onClick={(e, {store}) => {
+            store.toggle('$page.add')
+        }}>
+            Add
+        </Button>
+
+
+        <PureContainer controller={PageControlller}>
+            <GridLayout
+                rows={20}
+                columns={40}
+                onDrop="onWidgetDrop"
+                style="flex: 1 0 0%"
+            >
+                <Repeater records:bind="grid" recordAlias="$widget">
                     <DragSource
-                        class="box"
+                        class:tpl="widget-cell {$widget.box.class}"
+                        style={{
+                            gridArea: {tpl: '{[{$widget.box.row} + 1]} / {[{$widget.box.col} + 1]} / span {$widget.box.height} / span {$widget.box.width}'}
+                        }}
+                        visible:expr="{$widget.type}"
                         data={{
                             type: 'widget',
-                            widget: {bind: '$record'}
+                            widget: {bind: '$widget'}
+                        }}
+                        onDragStart={(e, {store}) => {
+                            store.set('dropped', false)
+                        }}
+                        onDragEnd={(e, {store}) => {
+                            if (store.get('dropped'))
+                                store.delete('$widget');
                         }}
                     >
-                        <DashboardWidget type:bind="$record.type"/>
+                        <DashboardWidget
+                            type:bind="$widget.type"
+                            props:bind="$widget.props"
+                        />
                     </DragSource>
-                </div>
-            </Repeater>
-        </FlexRow>
-    </div>
-
-    <Button mod="hollow" putInto="tools" onClick={(e, {store}) => {
-        store.toggle('$page.add')
-    }}>
-        Add
-    </Button>
-
-
-    <PureContainer controller={PageControlller}>
-        <GridLayout
-            rows={20}
-            columns={40}
-            onDrop="onWidgetDrop"
-        >
-            <Repeater records:bind="grid" recordAlias="$widget">
-                <DragSource
-                    class="widget-cell"
-                    style={{
-                        gridArea: {tpl: '{[{$widget.rect.row} + 1]} / {[{$widget.rect.col} + 1]} / span {$widget.rect.height} / span {$widget.rect.width}'}
-                    }}
-                    visible:expr="{$widget.type}"
-                    data={{
-                        type: 'widget',
-                        widget: {bind: '$widget'}
-                    }}
-                    onDragStart={(e, {store}) => {
-                        store.set('dropped', false)
-                    }}
-                    onDragEnd={(e, {store}) => {
-                        if (store.get('dropped'))
-                            store.delete('$widget');
-                    }}
-                >
-                    <DashboardWidget
-                        type:bind="$widget.type"
-                        props:bind="$widget.props"
-                    />
-                </DragSource>
-            </Repeater>
-        </GridLayout>
-    </PureContainer>
+                </Repeater>
+            </GridLayout>
+        </PureContainer>
+    </FlexCol>
 </cx>;
 

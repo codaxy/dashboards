@@ -3,12 +3,16 @@ $cx-include-global-rules: true;
 @import "~cx/src/variables";
 
 $cx-element-style-map: cx-deep-map-merge($cx-element-style-map, (
-  body: (
-    background: rgba(black, 0.01)
-  )
+        body: (
+                background: rgba(black, 0.01)
+        ),
+        strong: (
+                font-weight: 500
+        )
 ));
 @import "~cx/src/index";
 
 @import "components/index";
 @import "layout/index";
 @import "routes/index";
+@import "widgets/index";

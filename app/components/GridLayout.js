@@ -33,7 +33,11 @@ class Grid extends VDOM.Component {
         let {data, instance, children} = this.props;
         let {CSS, baseClass} = instance.widget;
 
-        return <div className={data.classNames} ref={createRef(this, "el")}>
+        return <div
+            className={data.classNames}
+            ref={createRef(this, "el")}
+            style={data.style}
+        >
             <div
                 className={CSS.element(baseClass, "grid")}
                 style={{
@@ -64,10 +68,10 @@ class Grid extends VDOM.Component {
 
     onDragMeasure(e) {
         let bounds = this.gridEl.getBoundingClientRect();
-        let cx = e.cursor.clientX - e.source.deltaX + e.source.width / 2;
-        let cy = e.cursor.clientY - e.source.deltaY + e.source.height / 2;
+        let cx = e.cursor.clientX - (e.source.deltaX || 0) + e.source.width / 2;
+        let cy = e.cursor.clientY - (e.source.deltaY || 0) + e.source.height / 2;
 
-        let size = e.source.data.widget.rect || { width: 4, height: 4 };
+        let size = e.source.data.widget.box || { width: 4, height: 4 };
 
         let row = Math.round((cy - bounds.top) / this.unitSize - size.height / 2);
         let col = Math.round((cx - bounds.left) / this.unitSize - size.width / 2);
@@ -78,6 +82,7 @@ class Grid extends VDOM.Component {
         if (0 <= row && row < data.rows && 0 <= col && col < data.columns) {
             this.setState({
                 dd: 'hover',
+                box: size,
                 dropRow: row,
                 dropCol: col,
                 dropWidth: size.width,
@@ -109,10 +114,9 @@ class Grid extends VDOM.Component {
 
         if (widget.onDrop) {
             instance.invoke("onDrop", e, instance, {
+                ...this.state.box,
                 row: this.state.dropRow,
-                col: this.state.dropCol,
-                width: this.state.dropWidth,
-                height: this.state.dropHeight
+                col: this.state.dropCol
             });
         }
     }
@@ -129,6 +133,7 @@ class Grid extends VDOM.Component {
 
         this.gridEl.style.width = `${data.columns * unitSize}px`;
         this.gridEl.style.height = `${data.rows * unitSize}px`;
+        this.gridEl.style.fontSize = `${unitSize / 40 * 16}px`;
     }
 
     componentWillUnmount() {

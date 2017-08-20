@@ -17,12 +17,12 @@ export function getWidgetTypes() {
 export function getWidgetTypeProps() {
     return Object.keys(widgets).map(type=>({
         type,
-        rect: props[type]
+        box: props[type]
     }));
 }
 
-registerWidget('time', { width: 4, height: 4 }, (props) => System.import('./time').then(x=>x.default(props)));
-registerWidget('btc-price-bchain-info', { width: 4, height: 4 }, (props) => System.import('./btc-price-bchain-info').then(x=>x.default(props)));
-registerWidget('github-stars', { width: 4, height: 4 }, (props) => System.import('./github-stars').then(x=>x.default(props)));
-registerWidget('github-issues', { width: 8, height: 4 }, (props) => System.import('./github-issues').then(x=>x.default(props)));
+registerWidget('time', { width: 8, height: 4, class: 'kpi' }, (props) => System.import('./time').then(x=>x.default(props)));
+registerWidget('btc-price-bchain-info', { width: 4, height: 4, class: 'kpi' }, (props) => System.import('./btc-price-bchain-info').then(x=>x.default(props)));
+registerWidget('github-stars', { width: 4, height: 4, class: 'kpi' }, (props) => System.import('./github-stars').then(x=>x.default(props)));
+registerWidget('github-issues', { width: 8, height: 4, class: 'kpi' }, (props) => System.import('./github-issues').then(x=>x.default(props)));
 

@@ -17,6 +17,7 @@
   box-shadow: 0 0 2px rgba(black, 0.1);
   margin: 1px;
   cursor: move;
+  animation: appear 0.15s;
 }
 
 .cxb-dragclone {
@@ -32,6 +33,7 @@
   position: absolute;
   left: 0;
   right: 0;
+  font-size: 12px;
 
   & ~ * {
     margin-top: 250px;
@@ -49,5 +51,17 @@
 
   to {
     top: 0;
+  }
+}
+
+@keyframes appear {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  to {
+    transform: none;
+    opacity: 1;
   }
 }

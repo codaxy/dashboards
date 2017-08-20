@@ -1,0 +1,66 @@
+.kpi {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+}
+
+.kpi-header {
+  margin-bottom: 0.25em;
+  text-align: center;
+  //text-transform: uppercase;
+}
+
+.kpi-footer {
+  margin-top: 0.25em;
+  text-align: center;
+  //text-transform: uppercase;
+  color: gray;
+
+  a {
+    color: inherit;
+  }
+}
+
+.kpi-main {
+  flex: 1 0 0%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+
+.kpi-value {
+  font-size: 3em;
+  text-align: center;
+}
+
+.kpi-value-text {
+  font-size: 15px;
+  text-align: right;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: -10px;
+}
+
+.donut-text {
+  font-size: 20px;
+}
+
+.line-marker circle {
+  stroke: white;
+  stroke-width: 4px;
+  transition: stroke 0.3s ease-in-out;
+}
+
+.line-marker circle:hover {
+  stroke: #99e4ee;
+}
+
+.cxe-numericaxis-label {
+  font-size: 10px;
+}
+
+.cxe-categoryaxis-label {
+  font-size: 10px;
+}
