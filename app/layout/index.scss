@@ -26,6 +26,7 @@ body {
       line-height: 1.4;
       font-size: 20px;
       margin: 0;
+      font-weight: 400;
       //color: white;
    }
 
@@ -64,11 +65,12 @@ body {
       box-shadow: 0 0 1px rgba(0,0,0,.26);
       text-transform: uppercase;
       font-size: 1.5rem;
+      font-weight: 400;
    }
 
    dt {
       padding: 0.5rem 0.5rem 0.5rem 2rem;
-      font-weight: bold;
+      font-weight: 500;
    }
 
    dl .cxb-link {
