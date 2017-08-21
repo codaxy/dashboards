@@ -3,12 +3,12 @@ $cx-include-global-rules: true;
 @import "~cx/src/variables";
 
 $cx-element-style-map: cx-deep-map-merge($cx-element-style-map, (
-        body: (
-                background: rgba(black, 0.01)
-        ),
-        strong: (
-                font-weight: 500
-        )
+  body: (
+    background: rgba(#0c9420, 0.5),
+  ),
+  strong: (
+    font-weight: 500
+  )
 ));
 @import "~cx/src/index";
 
@@ -16,3 +16,8 @@ $cx-element-style-map: cx-deep-map-merge($cx-element-style-map, (
 @import "layout/index";
 @import "routes/index";
 @import "widgets/index";
+
+//body {
+//  background-image: url('http://wallpapercave.com/wp/WY4oW5x.jpg');
+//  background-position: center center;
+//}

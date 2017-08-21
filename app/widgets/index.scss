@@ -5,16 +5,17 @@
 }
 
 .kpi-header {
-  margin-bottom: 0.25em;
+  margin-bottom: 0.5em;
   text-align: center;
+  color: gray;
   //text-transform: uppercase;
 }
 
 .kpi-footer {
-  margin-top: 0.25em;
+  margin-top: 0.5em;
   text-align: center;
   //text-transform: uppercase;
-  color: gray;
+  color: rgba(black, 0.6);
 
   a {
     color: inherit;
@@ -27,12 +28,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .kpi-value {
-  font-size: 3em;
+  font-size: 3.5em;
   text-align: center;
+  font-weight: 200;
 }
 
 .kpi-value-text {
@@ -62,5 +65,9 @@
 }
 
 .cxe-categoryaxis-label {
+  font-size: 10px;
+}
+
+.cxb-dragclone .kpi {
   font-size: 10px;
 }

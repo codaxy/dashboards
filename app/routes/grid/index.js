@@ -58,10 +58,13 @@ export default <cx>
 
         <PureContainer controller={PageControlller}>
             <GridLayout
-                rows={20}
-                columns={40}
+                rows={40}
+                columns={80}
                 onDrop="onWidgetDrop"
-                style="flex: 1 0 0%"
+                style={{
+                    flex: "1 1 0%",
+                    margin: { expr: "{$page.add} ? '10px' : '0'"}
+                }}
             >
                 <Repeater records:bind="grid" recordAlias="$widget">
                     <DragSource

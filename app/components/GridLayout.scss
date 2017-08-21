@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .cxe-gridlayout-grid {
@@ -11,6 +12,7 @@
 }
 
 .cxe-gridlayout-drop-marker {
-  margin: 5px;
-  background: white;
+  //margin: 10px;
+  background: rgba(white, 0.5);
+  border: 2px solid rgba(black, 0.2);
 }

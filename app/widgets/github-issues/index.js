@@ -13,7 +13,7 @@ export default ({repo} = defaultProps) => <cx>
     <div class="kpi-header">
         Recent Issues: <strong text:bind="repo" controller={{type: Controller, repo}}/>
     </div>
-    <div class="kpi-main">
+    <div class="kpi-main" style="justify-content: start">
         <ul>
             <Repeater records:bind="issues">
                 <li>

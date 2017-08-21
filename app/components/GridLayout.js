@@ -129,11 +129,11 @@ class Grid extends VDOM.Component {
         let unitWidth = width / data.columns;
         let unitHeight = height / data.rows;
 
-        let unitSize = this.unitSize = Math.floor(Math.min(unitWidth, unitHeight, 175));
+        let unitSize = this.unitSize = Math.floor(Math.min(unitWidth, unitHeight, 25));
 
         this.gridEl.style.width = `${data.columns * unitSize}px`;
         this.gridEl.style.height = `${data.rows * unitSize}px`;
-        this.gridEl.style.fontSize = `${unitSize / 40 * 16}px`;
+        this.gridEl.style.fontSize = `${unitSize / 20 * 12}px`;
     }
 
     componentWillUnmount() {
