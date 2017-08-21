@@ -28,7 +28,7 @@ export default <cx>
             <ContentPlaceholder name="tools"/>
         </header>
         <aside class="aside">
-            <h1>Cx App</h1>
+            <h1>Dashboards</h1>
             <dl>
                 <dt>
                     App
@@ -39,8 +39,8 @@ export default <cx>
                     </Link>
                 </dd>
                 <dd>
-                    <Link href="~/grid" url:bind="url">
-                        Grid
+                    <Link href="~/old" url:bind="url">
+                        Old
                     </Link>
                 </dd>
                 <dd>

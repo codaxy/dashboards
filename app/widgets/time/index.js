@@ -12,12 +12,12 @@ export default (props = defaultProps) => <cx>
     <div class="kpi-main" controller={Controller}>
         <div
             class="kpi-value"
-            text:tpl="{time:datetime;hhmma}"
+            text:tpl="{time}"
         />
     </div>
     <div class="kpi-footer" ws>
-        <span text:tpl="{time:datetime;DDDD}"/>
-        <span text:tpl="{time:date}"/>
+        <span text:tpl="{day}"/>
+        <span text:tpl="{date}"/>
     </div>
 </cx>
 

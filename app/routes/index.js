@@ -6,7 +6,7 @@ import AppLayout from '../layout';
 import Default from './default';
 import About from './about';
 import Dashboard from './dashboard';
-import Grid from './grid';
+import Old from './old';
 
 
 
@@ -20,8 +20,8 @@ export default <cx>
         <Route route="~/" url:bind="url">
             <Default/>
         </Route>
-        <Route route="~/grid" url:bind="url">
-            <Grid />
+        <Route route="~/old" url:bind="url">
+            <Old />
         </Route>
         <Route route="~/about" url:bind="url">
             <About/>

@@ -5,13 +5,13 @@ export default class extends Controller {
       this.store.init("layout.aside.open", false); //window.innerWidth >= 800);
 
       this.addTrigger('navigation', ['url'], () => {
-         if (window.innerWidth < 800)
-            this.store.set('layout.aside.open', false);
+         //if (window.innerWidth < 800)
+         this.store.set('layout.aside.open', false);
       });
    }
 
    onMainClick(e, {store}) {
-      if (window.innerWidth < 800)
-         store.set('layout.aside.open', false);
+      //if (window.innerWidth < 800)
+      store.set('layout.aside.open', false);
    }
 }

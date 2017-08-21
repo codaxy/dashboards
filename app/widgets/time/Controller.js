@@ -1,4 +1,4 @@
-import {Controller} from 'cx/ui';
+import {Controller, Format} from 'cx/ui';
 
 export default class extends Controller {
     onInit() {
@@ -11,6 +11,8 @@ export default class extends Controller {
     }
 
     updateTime() {
-        this.store.set('time', Date.now());
+        this.store.set('time', Format.value(Date.now(), 'datetime;hhmma'));
+        this.store.set('day', Format.value(Date.now(), 'datetime;DDDD'));
+        this.store.set('date', Format.value(Date.now(), 'date'));
     }
 }
