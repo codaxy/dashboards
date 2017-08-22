@@ -1,7 +1,16 @@
-import {createFunctionalComponent} from 'cx/ui';
-import { createWidget } from '../widgets';
-import {ContentResolver} from "cx/widgets";
+import {createWidget} from '../widgets';
+import {ContentResolver, Rescope} from "cx/widgets";
 
-export default ({ type, props }) => <cx>
-    <ContentResolver params={{ type, props }} onResolve={({type, props }) => createWidget(type, props)} />
+export default ({type, data, props}) => <cx>
+    <ContentResolver
+        params={{type, props}}
+        onResolve={
+            ({type, props}) => createWidget(type, props)
+                .then(w => <cx>
+                    <Rescope bind={data.bind}>
+                        {w}
+                    </Rescope>
+                </cx>)
+        }
+    />
 </cx>

@@ -3,12 +3,17 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  font-size: 14px;
+  transition: margin 0.3s;
+
 }
 
 .cxe-gridlayout-grid {
   display: grid;
   background: rgba(white, 0.3);
   box-shadow: 0 0 2px rgba(black, 0.2);
+  transition: transform 0.3s;
+  flex: 0 0 auto;
 }
 
 .cxe-gridlayout-drop-marker {

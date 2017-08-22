@@ -11,9 +11,7 @@ import Old from './old';
 
 
 export default <cx>
-    <Sandbox
-       key:bind="url"
-       storage:bind="pages"
+    <PureContainer
        outerLayout={AppLayout}
        layout={FirstVisibleChildLayout}
     >
@@ -32,6 +30,6 @@ export default <cx>
        <Section title="Page Not Found" mod="card">
           This page doesn't exists. Please check your URL.
        </Section>
-    </Sandbox>
+    </PureContainer>
 </cx>
 

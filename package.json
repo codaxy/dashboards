@@ -25,6 +25,7 @@
     "cx-react": "^17.4.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "uid": "^0.0.2",
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {

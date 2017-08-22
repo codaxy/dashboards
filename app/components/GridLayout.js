@@ -37,12 +37,15 @@ class Grid extends VDOM.Component {
             className={data.classNames}
             ref={createRef(this, "el")}
             style={data.style}
+            onTransitionEnd={::this.componentDidUpdate}
         >
             <div
                 className={CSS.element(baseClass, "grid")}
                 style={{
                     gridTemplateColumns: `repeat(${data.columns}, 1fr)`,
                     gridTemplateRows: `repeat(${data.rows}, 1fr)`,
+                    width: `${data.columns * 25}`,
+                    height: `${data.rows * 25}`,
                 }}
                 ref={createRef(this, "gridEl")}
             >
@@ -68,8 +71,12 @@ class Grid extends VDOM.Component {
 
     onDragMeasure(e) {
         let bounds = this.gridEl.getBoundingClientRect();
+
         let cx = e.cursor.clientX - (e.source.deltaX || 0) + e.source.width / 2;
         let cy = e.cursor.clientY - (e.source.deltaY || 0) + e.source.height / 2;
+
+        // let cx = e.cursor.clientX;
+        // let cy = e.cursor.clientY;
 
         let size = e.source.data.widget.box || { width: 4, height: 4 };
 
@@ -77,7 +84,7 @@ class Grid extends VDOM.Component {
         let col = Math.round((cx - bounds.left) / this.unitSize - size.width / 2);
         let {data} = this.props;
 
-
+        console.log((e.cursor.clientX - bounds.left))
 
         if (0 <= row && row < data.rows && 0 <= col && col < data.columns) {
             this.setState({
@@ -130,10 +137,14 @@ class Grid extends VDOM.Component {
         let unitHeight = height / data.rows;
 
         let unitSize = this.unitSize = Math.floor(Math.min(unitWidth, unitHeight, 25));
+        let scale = this.scale = unitSize / 25;
 
-        this.gridEl.style.width = `${data.columns * unitSize}px`;
-        this.gridEl.style.height = `${data.rows * unitSize}px`;
-        this.gridEl.style.fontSize = `${unitSize / 20 * 12}px`;
+        //console.log(unitWidth, unitHeight, unitSize);
+
+        //this.gridEl.style.width = `${data.columns * unitSize}px`;
+        //this.gridEl.style.height = `${data.rows * unitSize}px`;
+        //this.gridEl.style.fontSize = `${unitSize / 20 * 12}px`;
+        this.gridEl.style.transform = `scale(${scale.toFixed(2)})`;
     }
 
     componentWillUnmount() {
