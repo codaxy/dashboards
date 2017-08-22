@@ -1504,9 +1504,9 @@ cx-react@^17.4.1:
   version "17.4.1"
   resolved "https://registry.yarnpkg.com/cx-react/-/cx-react-17.4.1.tgz#124c7d8606a76b6cfdf0b6a8cf5998a92bc66d20"
 
-cx@^17.8.9:
-  version "17.8.9"
-  resolved "https://registry.yarnpkg.com/cx/-/cx-17.8.9.tgz#467942115d7fdecc92184a20a710621668dca457"
+cx@^17.8.10:
+  version "17.8.10"
+  resolved "https://registry.yarnpkg.com/cx/-/cx-17.8.10.tgz#c557b7ffe1e1ddbf3ca7fd40b1acc8440c34f094"
   dependencies:
     intl-io "^0.2.5"
     route-parser "^0.0.5"
@@ -4679,10 +4679,6 @@ uuid@^2.0.2:
 uuid@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.1.tgz#6544bba2dfda8c1cf17e629a3a305e2bb1fee6c1"
-
-uuid@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
 
 validate-npm-package-license@^3.0.1:
   version "3.0.1"
