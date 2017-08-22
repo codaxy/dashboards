@@ -18,6 +18,7 @@
   margin: 1px;
   cursor: move;
   animation: appear 0.15s;
+  touch-action: none;
 }
 
 .cxb-dragclone {
@@ -33,6 +34,7 @@
   left: 0;
   right: 0;
   font-size: 10px;
+  touch-action: none;
 
   //& ~ * {
   //  margin-top: 250px;
