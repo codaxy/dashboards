@@ -37,15 +37,15 @@ class Grid extends VDOM.Component {
             className={data.classNames}
             ref={createRef(this, "el")}
             style={data.style}
-            onTransitionEnd={::this.componentDidUpdate}
+            onTransitionEnd={::this.onTransitionEnd}
         >
             <div
                 className={CSS.element(baseClass, "grid")}
                 style={{
                     gridTemplateColumns: `repeat(${data.columns}, 1fr)`,
                     gridTemplateRows: `repeat(${data.rows}, 1fr)`,
-                    width: `${data.columns * 25}`,
-                    height: `${data.rows * 25}`,
+                    width: `${data.columns * 25}px`,
+                    height: `${data.rows * 25}px`,
                 }}
                 ref={createRef(this, "gridEl")}
             >
@@ -83,8 +83,6 @@ class Grid extends VDOM.Component {
         let row = Math.round((cy - bounds.top) / this.unitSize - size.height / 2);
         let col = Math.round((cx - bounds.left) / this.unitSize - size.width / 2);
         let {data} = this.props;
-
-        console.log((e.cursor.clientX - bounds.left))
 
         if (0 <= row && row < data.rows && 0 <= col && col < data.columns) {
             this.setState({
@@ -128,6 +126,22 @@ class Grid extends VDOM.Component {
         }
     }
 
+    //not supported
+    onTransitionStart() {
+        this.transitionActive = true;
+        this.doTransition = () => {
+            this.componentDidUpdate();
+            if (this.transitionActive)
+                requestAnimationFrame(this.doTransition);
+        };
+        this.doTransition();
+    }
+
+    onTransitionEnd() {
+        this.transitionActive = false;
+        this.componentDidUpdate();
+    }
+
     componentDidUpdate() {
         let width = this.el.offsetWidth;
         let height = this.el.offsetHeight;
@@ -138,8 +152,6 @@ class Grid extends VDOM.Component {
 
         let unitSize = this.unitSize = Math.floor(Math.min(unitWidth, unitHeight, 25));
         let scale = this.scale = unitSize / 25;
-
-        //console.log(unitWidth, unitHeight, unitSize);
 
         //this.gridEl.style.width = `${data.columns * unitSize}px`;
         //this.gridEl.style.height = `${data.rows * unitSize}px`;
