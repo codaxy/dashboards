@@ -43,6 +43,7 @@ class Grid extends VDOM.Component {
 				ref={createRef(this, "el")}
 				style={data.style}
 				onTransitionEnd={::this.onTransitionEnd}
+				onClick={::this.onClick}
 			>
 				<div
 					className={CSS.element(baseClass, "grid")}
@@ -69,6 +70,14 @@ class Grid extends VDOM.Component {
 			</div>
 		);
 	}
+
+    onClick(e) {
+        let {instance} = this.props;
+        let {widget} = instance;
+
+        if (widget.onClick)
+            instance.invoke("onClick", e, instance);
+    }
 
 	componentDidMount() {
 		this.unResize = ResizeManager.subscribe(::this.componentDidUpdate);

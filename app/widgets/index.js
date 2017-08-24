@@ -61,6 +61,19 @@ registerWidget(
 );
 
 registerWidget(
+    "btc-price-coindesk",
+    props => System.import("./btc-price-coindesk").then(x => x.default(props)),
+    {
+        description: 'Bitcoin (BTC) price from CoinDesk',
+        box: {
+            width: 8,
+            height: 8,
+            class: "kpi"
+        }
+    }
+);
+
+registerWidget(
 	"github-stars",
 	props => System.import("./github-stars").then(x => x.default(props)),
 	{

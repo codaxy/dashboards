@@ -13,9 +13,18 @@ const getBtcPrice = () =>
 		});
 
 export default class extends Controller {
-	onInit() {
-		getBtcPrice().then(p => {
-			this.store.set("btcPrice", p);
-		});
-	}
+    onInit() {
+        this.timer = setInterval(::this.fetchPrice, 60 * 1000);
+        this.fetchPrice();
+    }
+
+    onDestroy() {
+        clearInterval(this.timer);
+    }
+
+    fetchPrice() {
+        getBtcPrice().then(p => {
+            this.store.set("btcPrice", p);
+        });
+    }
 }

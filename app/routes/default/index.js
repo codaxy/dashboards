@@ -114,6 +114,10 @@ export default (
 						flex: "1 1 0%",
 						marginRight: { expr: "{$page.add} ? '300px' : '0'" }
 					}}
+					onClick={(e, {store}) => {
+						//if (e.target == e.currentTarget)
+							store.set('$page.add', false);
+					}}
 				>
 					<Repeater records:bind="grid" recordAlias="$widget" keyField="id">
 						<Sandbox
