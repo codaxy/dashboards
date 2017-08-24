@@ -1504,9 +1504,9 @@ cx-react@^17.4.1:
   version "17.4.1"
   resolved "https://registry.yarnpkg.com/cx-react/-/cx-react-17.4.1.tgz#124c7d8606a76b6cfdf0b6a8cf5998a92bc66d20"
 
-cx@^17.8.10:
-  version "17.8.10"
-  resolved "https://registry.yarnpkg.com/cx/-/cx-17.8.10.tgz#c557b7ffe1e1ddbf3ca7fd40b1acc8440c34f094"
+cx@^17.8.11:
+  version "17.8.11"
+  resolved "https://registry.yarnpkg.com/cx/-/cx-17.8.11.tgz#6f55bb6f671af14c717d901e198b31536af9590d"
   dependencies:
     intl-io "^0.2.5"
     route-parser "^0.0.5"
@@ -3724,6 +3724,10 @@ prepend-http@^1.0.0:
 preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
+
+prettier@^1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.5.3.tgz#59dadc683345ec6b88f88b94ed4ae7e1da394bfe"
 
 pretty-error@^2.0.2:
   version "2.0.2"

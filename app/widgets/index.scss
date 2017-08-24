@@ -72,4 +72,30 @@
   font-size: 10px;
 }
 
+.widget-cell {
+  background: rgba(white, 0.9);
+  box-shadow: 0 0 2px rgba(black, 0.1);
+  margin: 1px;
+  cursor: move;
+  animation: appear 0.15s;
+  touch-action: none;
+  position: relative;
+
+  &:hover .widget-toolbar {
+    opacity: 0.8;
+  }
+}
+
+.widget-toolbar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  padding: 3px;
+  //padding: 3px 10px;
+  //background: rgba(gray, 0.3);
+  //color: white;
+  //transition: opacity 0.5s;
+}
+
 @import "./text/index";

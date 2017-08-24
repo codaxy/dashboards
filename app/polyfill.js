@@ -1,2 +1,2 @@
-import 'whatwg-fetch';
+import "whatwg-fetch";
 import "babel-polyfill";

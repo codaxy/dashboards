@@ -12,27 +12,21 @@
   }
 }
 
-.widget-cell {
-  background: rgba(white, 0.9);
-  box-shadow: 0 0 2px rgba(black, 0.1);
-  margin: 1px;
-  cursor: move;
-  animation: appear 0.15s;
-  touch-action: none;
-}
-
 .cxb-dragclone {
   opacity: 0.3;
 }
 
 .drawer {
+  box-sizing: border-box;
   background: rgba(lightsteelblue, 0.8);
-  padding: 5px;
+  padding: 20px 15px;
   box-shadow: 0 1px 2px rgba(black, 0.3);
   animation: slideIn 0.3s;
   position: absolute;
-  left: 0;
+  //left: 0;
   right: 0;
+  top: 0;
+  bottom: 0;
   font-size: 10px;
   touch-action: none;
 

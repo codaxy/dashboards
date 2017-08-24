@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --config config/webpack.dev.js --open",
-    "build": "webpack --config config/webpack.prod.js"
+    "build": "webpack --config config/webpack.prod.js",
+    "format": "prettier \"+(app)/**/*.js\" --write --use-tabs"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,7 @@
   "homepage": "https://github.com/mstijak/dashboards#readme",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "cx": "^17.8.10",
+    "cx": "^17.8.11",
     "cx-react": "^17.4.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -40,6 +41,7 @@
     "html-webpack-plugin": "^2.30.1",
     "json-loader": "^0.5.7",
     "node-sass": "^4.5.3",
+    "prettier": "^1.5.3",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.5",
