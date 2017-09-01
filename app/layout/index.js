@@ -1,6 +1,10 @@
-import { HtmlElement, Link, FlexRow } from "cx/widgets";
+import { HtmlElement, Link, FlexRow, CxCredit, enableTooltips } from "cx/widgets";
 import { ContentPlaceholder } from "cx/ui";
 import Controller from "./Controller";
+
+enableTooltips();
+
+import UserAccount from './UserAccount';
 
 export default (
 	<cx>
@@ -11,6 +15,7 @@ export default (
 				nav: { bind: "layout.aside.open" }
 			}}
 		>
+			<CxCredit style="color: white" />
 			<main class="main" onMouseDownCapture="onMainClick">
 				<ContentPlaceholder />
 			</main>
@@ -30,26 +35,16 @@ export default (
 			</header>
 			<aside class="aside">
 				<h1>Dashboards</h1>
+				<UserAccount/>
 				<dl>
-					<dt>App</dt>
-					<dd>
+					<dt>
 						<Link href="~/" url:bind="url">
-							Home
+						Dashboards
 						</Link>
-					</dd>
+					</dt>
 					<dd>
-						<Link href="~/old" url:bind="url">
-							Old
-						</Link>
-					</dd>
-					<dd>
-						<Link href="~/dashboard" url:bind="url">
-							Dashboard
-						</Link>
-					</dd>
-					<dd>
-						<Link href="~/about" url:bind="url">
-							About
+						<Link href="~/new" url:bind="url">
+							New
 						</Link>
 					</dd>
 				</dl>

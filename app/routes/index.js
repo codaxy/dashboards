@@ -7,12 +7,17 @@ import Default from "./default";
 import About from "./about";
 import Dashboard from "./dashboard";
 import Old from "./old";
+import SignIn from './sign-in';
+import New from './new';
 
 export default (
 	<cx>
 		<PureContainer outerLayout={AppLayout} layout={FirstVisibleChildLayout}>
-			<Route route="~/" url:bind="url">
-				<Default />
+			<Route route="~/sign-in" url:bind="url">
+				<SignIn />
+			</Route>
+			<Route route="~/new" url:bind="url">
+				<New />
 			</Route>
 			<Route route="~/old" url:bind="url">
 				<Old />
@@ -23,9 +28,9 @@ export default (
 			<Route route="~/dashboard" url:bind="url">
 				<Dashboard />
 			</Route>
-			<Section title="Page Not Found" mod="card">
-				This page doesn't exists. Please check your URL.
-			</Section>
+			<Route route="~/:dashboardId" url:bind="url">
+				<Default />
+			</Route>
 		</PureContainer>
 	</cx>
 );
