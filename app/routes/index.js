@@ -12,7 +12,12 @@ import New from './new';
 
 export default (
 	<cx>
-		<PureContainer outerLayout={AppLayout} layout={FirstVisibleChildLayout}>
+		<Sandbox
+            outerLayout={AppLayout}
+            layout={FirstVisibleChildLayout}
+            key:bind="url"
+            storage:bind="pages"
+        >
 			<Route route="~/sign-in" url:bind="url">
 				<SignIn />
 			</Route>
@@ -31,6 +36,6 @@ export default (
 			<Route route="~/:dashboardId" url:bind="url">
 				<Default />
 			</Route>
-		</PureContainer>
+		</Sandbox>
 	</cx>
 );

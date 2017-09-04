@@ -16,17 +16,36 @@ import { GridLayout } from "../../components/GridLayout";
 import { getWidgetTypeProps } from "../../widgets";
 import uid from "uid";
 
+import {database} from '../../api/app';
+import watch from '../../api/watch';
+
 class PageControlller extends Controller {
 	onInit() {
-		this.store.init("grid", []);
+        this.store.init("grid", []);
 
-		this.store.set(
-			"widgets",
-			getWidgetTypeProps().map(w => ({
-				id: w.type,
-				...w
-			}))
-		);
+        this.store.set(
+            "widgets",
+            getWidgetTypeProps().map(w => ({
+                id: w.type,
+                ...w
+            }))
+        );
+
+        let id = this.store.get('$route.dashboardId');
+        let widgetsPath = `dashboard/${id}/widgets`;
+
+        this.unsubscribe = watch(widgetsPath, w => {
+            this.store.set('grid', w);
+        });
+
+        this.addTrigger('autoSave', ['grid'], w => {
+            database.ref(widgetsPath)
+                .set(w);
+        })
+    }
+
+    onDestroy() {
+		this.unsubscribe();
 	}
 
 	onWidgetDrop(e, { store }, size) {

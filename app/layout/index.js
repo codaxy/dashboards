@@ -1,4 +1,4 @@
-import { HtmlElement, Link, FlexRow, CxCredit, enableTooltips } from "cx/widgets";
+import { HtmlElement, Link, FlexRow, CxCredit, Repeater, enableTooltips } from "cx/widgets";
 import { ContentPlaceholder } from "cx/ui";
 import Controller from "./Controller";
 
@@ -42,6 +42,15 @@ export default (
 						Dashboards
 						</Link>
 					</dt>
+					<Repeater records:bind="dashboards">
+						<dd>
+							<Link
+								href:tpl="~/{$record.id}"
+								url:bind="url"
+								text:bind="$record.title"
+							/>
+						</dd>
+					</Repeater>
 					<dd>
 						<Link href="~/new" url:bind="url">
 							New

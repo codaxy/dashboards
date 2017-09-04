@@ -11,7 +11,7 @@ export default class extends Controller {
         let create, associate;
 
         create = database
-            .ref(`dashboards/${id}`)
+            .ref(`dashboard/${id}`)
             .set({
                 title: 'New dashboard',
                 owner: userId || 'public',
