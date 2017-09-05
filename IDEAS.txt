@@ -17,3 +17,6 @@ Layout:
 - free floating widgets
 - predefined grid
 
+Performance:
+- IntersectionObserver loading
+

@@ -5,7 +5,10 @@
   overflow: hidden;
   font-size: 14px;
   transition: margin 0.3s;
-
+  background: gray;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
 .cxe-gridlayout-grid {

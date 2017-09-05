@@ -147,6 +147,7 @@ export default (
 				<PureContainer layout={{ type: LabelsTopLayout, vertical: true }}>
 					<TextField value:bind="$page.dashboard.title" label="Title" />
 					<ColorField value:bind="$page.dashboard.backgroundColor" label="Background" />
+					<TextField value:bind="$page.dashboard.backgroundImgUrl" label="Image URL" />
 				</PureContainer>
 			</Window>
 
@@ -158,6 +159,7 @@ export default (
 					style={{
 						flex: "1 1 0%",
 						backgroundColor: { bind: '$page.dashboard.backgroundColor' },
+                        backgroundImage: { tpl: '{$page.dashboard.backgroundImgUrl:wrap;url(";")}' },
 						marginRight: { expr: "{$page.add} ? '300px' : '0'" }
 					}}
 					onClick={(e, {store}) => {
