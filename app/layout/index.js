@@ -39,7 +39,7 @@ export default (
 				<dl>
 					<dt>
 						<Link href="~/" url:bind="url">
-						Dashboards
+							Home
 						</Link>
 					</dt>
 					<Repeater records:bind="dashboards">
@@ -51,21 +51,12 @@ export default (
 							/>
 						</dd>
 					</Repeater>
-					<dd>
+					<dt>
 						<Link href="~/new" url:bind="url">
-							New
+							Create New Dashboard
 						</Link>
-					</dd>
+					</dt>
 				</dl>
-				<dl>
-					<dt>Admin</dt>
-					<dd>
-						<Link href="~/users" url:bind="url" match="prefix">
-							Users
-						</Link>
-					</dd>
-				</dl>
-
 				<ContentPlaceholder name="aside" />
 			</aside>
 		</div>

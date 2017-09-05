@@ -7,9 +7,11 @@ import {
 	FlexCol,
 	IsolatedScope,
 	Sandbox,
-	TextField
+	TextField,
+    ColorField,
+	Window
 } from "cx/widgets";
-import { Controller } from "cx/ui";
+import { Controller, LabelsTopLayout } from "cx/ui";
 import { getSearchQueryPredicate } from 'cx/util';
 import DashboardWidget from "../../components/DashboardWidget";
 import { GridLayout } from "../../components/GridLayout";
@@ -21,8 +23,6 @@ import watch from '../../api/watch';
 
 class PageControlller extends Controller {
 	onInit() {
-        this.store.init("grid", []);
-
         this.store.set(
             "widgets",
             getWidgetTypeProps().map(w => ({
@@ -32,16 +32,22 @@ class PageControlller extends Controller {
         );
 
         let id = this.store.get('$route.dashboardId');
-        let widgetsPath = `dashboard/${id}/widgets`;
+        let dashboardPath = `dashboard/${id}`;
 
-        this.unsubscribe = watch(widgetsPath, w => {
-            this.store.set('grid', w);
+        this.unsubscribe = watch(dashboardPath, w => {
+            this.store.set('$page.dashboard', w);
         });
 
-        this.addTrigger('autoSave', ['grid'], w => {
-            database.ref(widgetsPath)
+        this.addTrigger('autoSave', ['$page.dashboard'], w => {
+            database.ref(dashboardPath)
                 .set(w);
-        })
+        });
+
+        this.addTrigger('updateTitle', ['$page.dashboard.title', 'user.id'], (title, userId) => {
+            if (userId)
+                database.ref(`user/${userId}/dashboards/${id}/title`)
+                    .set(title);
+        });
     }
 
     onDestroy() {
@@ -50,8 +56,8 @@ class PageControlller extends Controller {
 
 	onWidgetDrop(e, { store }, size) {
 		store.set("dropped", true);
-		store.update("grid", grid => [
-			...grid,
+		store.update("$page.dashboard.widgets", w => [
+			...(w || []),
 			{
 				...e.source.data.widget,
 				box: size,
@@ -63,7 +69,7 @@ class PageControlller extends Controller {
 
 export default (
 	<cx>
-		<h2 putInto="header">Grid Based Dashboard</h2>
+		<h2 putInto="header" text:bind="$page.dashboard.title" />
 
 		<FlexRow style="height: 100%">
 			<div visible:bind="$page.add" class="drawer" style="width: 300px">
@@ -114,15 +120,35 @@ export default (
 				</FlexRow>
 			</div>
 
-			<Button
-				mod="hollow"
-				putInto="tools"
-				onClick={(e, { store }) => {
-					store.toggle("$page.add");
-				}}
+			<PureContainer putInto="tools">
+				<Button
+					mod="hollow"
+					onClick={(e, { store }) => {
+                    store.toggle("$page.edit");
+                }}
+				>
+					Edit
+				</Button>
+				<Button
+					mod="hollow"
+					onClick={(e, { store }) => {
+                        store.toggle("$page.add");
+                    }}
+				>
+					Add Widget
+				</Button>
+			</PureContainer>
+
+			<Window
+				visible:bind="$page.edit"
+				title="Dashboard Properties"
+				bodyStyle="padding: 20px 30px 30px 30px"
 			>
-				Add
-			</Button>
+				<PureContainer layout={{ type: LabelsTopLayout, vertical: true }}>
+					<TextField value:bind="$page.dashboard.title" label="Title" />
+					<ColorField value:bind="$page.dashboard.backgroundColor" label="Background" />
+				</PureContainer>
+			</Window>
 
 			<PureContainer controller={PageControlller}>
 				<GridLayout
@@ -131,6 +157,7 @@ export default (
 					onDrop="onWidgetDrop"
 					style={{
 						flex: "1 1 0%",
+						backgroundColor: { bind: '$page.dashboard.backgroundColor' },
 						marginRight: { expr: "{$page.add} ? '300px' : '0'" }
 					}}
 					onClick={(e, {store}) => {
@@ -138,7 +165,7 @@ export default (
 							store.set('$page.add', false);
 					}}
 				>
-					<Repeater records:bind="grid" recordAlias="$widget" keyField="id">
+					<Repeater records:bind="$page.dashboard.widgets" recordAlias="$widget" keyField="id">
 						<Sandbox
 							key:bind="$widget.id"
 							storage:bind="widgetData"

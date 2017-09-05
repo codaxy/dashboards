@@ -4,7 +4,7 @@ $cx-include-global-rules: true;
 
 $cx-element-style-map: cx-deep-map-merge($cx-element-style-map, (
   body: (
-    background: rgba(#0c9420, 0.5),
+    background: #eeeeee
   ),
   strong: (
     font-weight: 500
