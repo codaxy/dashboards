@@ -44,7 +44,7 @@ class PageControlller extends Controller {
         });
 
         this.addTrigger('updateTitle', ['$page.dashboard.title', 'user.id'], (title, userId) => {
-            if (userId)
+            if (userId && title !== undefined)
                 database.ref(`user/${userId}/dashboards/${id}/title`)
                     .set(title);
         });
