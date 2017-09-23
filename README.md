@@ -14,7 +14,7 @@ Front-end:
 Back-end:
 * [Firebase](https://firebase.google.com/)
 
-Experimental Browser Features:
+Experimental browser features:
 
 * [`display: grid`](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
 * [`IntersectionObserver`](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
