@@ -1,7 +1,7 @@
 # Dashboards
 
 This application allows you to build personalized dashboards using drag &amp; drop. Dashboards consists out of widgets
-that are placed on the board. Widgets are simple to implement, so anyone can build a widget for his own dashboards.
+that are placed on the board. Widgets are simple to implement, so anyone can build a widget for his own dashboard.
 
 ### Technology Stack 
 
