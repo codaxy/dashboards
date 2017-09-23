@@ -1,22 +1,20 @@
 # Dashboards
 
 This application allows you to build personalized dashboards using drag &amp; drop. Dashboards consists out of widgets
-that are placed on the board. Widgets are simple to implement, so everyone can make widgets they need.
+that are placed on the board. Widgets are simple to implement, so everyone can make the widgets they need.
 
 ### Technology Stack 
 
-Front-end:
+*Front-end*:
 * CxJS
 * React
 * Babel
 * webpack
 
-Back-end:
+*Back-end*:
 * Firebase
 
-### Experimental Browser Features
-
-This app uses experimental browser features such as:
+*Experimental Browser Features:*
 
 * `display: grid` 
 * `IntersectionObserver` 
@@ -25,9 +23,9 @@ These features are not yet fully supported in all browsers.
 
 ### Getting Started
 
-Clone the repo and install packages using `yarn install` or `npm install`.
+Clone the repository and install packages using `yarn install` or `npm install`.
 
-Start the application on your machine:
+To start the application on your machine, run:
 
 ```
 npm start
