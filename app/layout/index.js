@@ -1,10 +1,17 @@
-import { HtmlElement, Link, FlexRow, CxCredit, Repeater, enableTooltips } from "cx/widgets";
+import {
+	HtmlElement,
+	Link,
+	FlexRow,
+	CxCredit,
+	Repeater,
+	enableTooltips
+} from "cx/widgets";
 import { ContentPlaceholder } from "cx/ui";
 import Controller from "./Controller";
 
 enableTooltips();
 
-import UserAccount from './UserAccount';
+import UserAccount from "./UserAccount";
 
 export default (
 	<cx>
@@ -35,7 +42,7 @@ export default (
 			</header>
 			<aside class="aside">
 				<h1>Dashboards</h1>
-				<UserAccount/>
+				<UserAccount />
 				<dl>
 					<dt>
 						<Link href="~/" url:bind="url">

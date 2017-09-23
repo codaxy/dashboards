@@ -1,5 +1,6 @@
 import Controller from "./Controller";
 import { enableCultureSensitiveFormatting } from "cx/ui";
+
 enableCultureSensitiveFormatting();
 
 const defaultProps = {

@@ -5,16 +5,16 @@ that are placed on the board. Widgets are simple to implement, so everyone can m
 
 ### Technology Stack 
 
-*Front-end*:
+Front-end:
 * CxJS
 * React
 * Babel
 * webpack
 
-*Back-end*:
+Back-end:
 * Firebase
 
-*Experimental Browser Features:*
+Experimental Browser Features:
 
 * `display: grid` 
 * `IntersectionObserver` 

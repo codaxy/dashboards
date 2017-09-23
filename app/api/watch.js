@@ -1,13 +1,13 @@
-import {database} from './app';
+import { database } from "./app";
 
 export default function watch(path, callback) {
-    let ref = database.ref(path);
+	let ref = database.ref(path);
 
-    let cb = x => callback(x.val());
+	let cb = x => callback(x.val());
 
-    ref.on('value', cb);
+	ref.on("value", cb);
 
-    return () => {
-        ref.off('value', cb);
-    }
+	return () => {
+		ref.off("value", cb);
+	};
 }

@@ -8,49 +8,51 @@ import {
 	IsolatedScope,
 	Sandbox,
 	TextField,
-    ColorField,
+	ColorField,
 	Window
 } from "cx/widgets";
 import { Controller, LabelsTopLayout } from "cx/ui";
-import { getSearchQueryPredicate } from 'cx/util';
+import { getSearchQueryPredicate } from "cx/util";
 import DashboardWidget from "../../components/DashboardWidget";
 import { GridLayout } from "../../components/GridLayout";
 import { getWidgetTypeProps } from "../../widgets";
 import uid from "uid";
 
-import {database} from '../../api/app';
-import watch from '../../api/watch';
+import { database } from "../../api/app";
+import watch from "../../api/watch";
 
 class PageControlller extends Controller {
 	onInit() {
-        this.store.set(
-            "widgets",
-            getWidgetTypeProps().map(w => ({
-                id: w.type,
-                ...w
-            }))
-        );
+		this.store.set(
+			"widgets",
+			getWidgetTypeProps().map(w => ({
+				id: w.type,
+				...w
+			}))
+		);
 
-        let id = this.store.get('$route.dashboardId');
-        let dashboardPath = `dashboard/${id}`;
+		let id = this.store.get("$route.dashboardId");
+		let dashboardPath = `dashboard/${id}`;
 
-        this.unsubscribe = watch(dashboardPath, w => {
-            this.store.set('$page.dashboard', w);
-        });
+		this.unsubscribe = watch(dashboardPath, w => {
+			this.store.set("$page.dashboard", w);
+		});
 
-        this.addTrigger('autoSave', ['$page.dashboard'], w => {
-            database.ref(dashboardPath)
-                .set(w);
-        });
+		this.addTrigger("autoSave", ["$page.dashboard"], w => {
+			database.ref(dashboardPath).set(w);
+		});
 
-        this.addTrigger('updateTitle', ['$page.dashboard.title', 'user.id'], (title, userId) => {
-            if (userId && title !== undefined)
-                database.ref(`user/${userId}/dashboards/${id}/title`)
-                    .set(title);
-        });
-    }
+		this.addTrigger(
+			"updateTitle",
+			["$page.dashboard.title", "user.id"],
+			(title, userId) => {
+				if (userId && title !== undefined)
+					database.ref(`user/${userId}/dashboards/${id}/title`).set(title);
+			}
+		);
+	}
 
-    onDestroy() {
+	onDestroy() {
 		this.unsubscribe();
 	}
 
@@ -85,10 +87,10 @@ export default (
 						recordAlias="$widget"
 						keyField="type"
 						filterParams:bind="$page.search"
-						onCreateFilter={filter=> {
-                            let predicate = getSearchQueryPredicate(filter);
-                            return (record) => predicate(record.description);
-                        }}
+						onCreateFilter={filter => {
+							let predicate = getSearchQueryPredicate(filter);
+							return record => predicate(record.description);
+						}}
 					>
 						<div class="gallery">
 							<Sandbox
@@ -124,16 +126,16 @@ export default (
 				<Button
 					mod="hollow"
 					onClick={(e, { store }) => {
-                    store.toggle("$page.edit");
-                }}
+						store.toggle("$page.edit");
+					}}
 				>
 					Edit
 				</Button>
 				<Button
 					mod="hollow"
 					onClick={(e, { store }) => {
-                        store.toggle("$page.add");
-                    }}
+						store.toggle("$page.add");
+					}}
 				>
 					Add Widget
 				</Button>
@@ -146,8 +148,14 @@ export default (
 			>
 				<PureContainer layout={{ type: LabelsTopLayout, vertical: true }}>
 					<TextField value:bind="$page.dashboard.title" label="Title" />
-					<ColorField value:bind="$page.dashboard.backgroundColor" label="Background" />
-					<TextField value:bind="$page.dashboard.backgroundImgUrl" label="Image URL" />
+					<ColorField
+						value:bind="$page.dashboard.backgroundColor"
+						label="Background"
+					/>
+					<TextField
+						value:bind="$page.dashboard.backgroundImgUrl"
+						label="Image URL"
+					/>
 				</PureContainer>
 			</Window>
 
@@ -158,16 +166,22 @@ export default (
 					onDrop="onWidgetDrop"
 					style={{
 						flex: "1 1 0%",
-						backgroundColor: { bind: '$page.dashboard.backgroundColor' },
-                        backgroundImage: { tpl: '{$page.dashboard.backgroundImgUrl:wrap;url(";")}' },
+						backgroundColor: { bind: "$page.dashboard.backgroundColor" },
+						backgroundImage: {
+							tpl: '{$page.dashboard.backgroundImgUrl:wrap;url(";")}'
+						},
 						marginRight: { expr: "{$page.add} ? '300px' : '0'" }
 					}}
-					onClick={(e, {store}) => {
+					onClick={(e, { store }) => {
 						//if (e.target == e.currentTarget)
-							store.set('$page.add', false);
+						store.set("$page.add", false);
 					}}
 				>
-					<Repeater records:bind="$page.dashboard.widgets" recordAlias="$widget" keyField="id">
+					<Repeater
+						records:bind="$page.dashboard.widgets"
+						recordAlias="$widget"
+						keyField="id"
+					>
 						<Sandbox
 							key:bind="$widget.id"
 							storage:bind="widgetData"

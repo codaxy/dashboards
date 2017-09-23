@@ -1,12 +1,10 @@
-import { Controller } from 'cx/ui';
-import { Toast } from 'cx/widgets';
+import { Controller } from "cx/ui";
+import { Toast } from "cx/widgets";
 
-import {firebase, auth} from '../../api/app';
+import { firebase, auth } from "../../api/app";
 
 export default class extends Controller {
-	onInit() {
-
-	}
+	onInit() {}
 
 	signInWithGoogle(e) {
 		e.preventDefault();
@@ -21,28 +19,31 @@ export default class extends Controller {
 	}
 
 	signInWithProvider(provider) {
-		auth.signInWithPopup(provider).then(({user}) => {
-			this.store.set('$root.user', {
-				email: user.email,
-				id: user.uid,
-				displayName: user.displayName,
-				photoURL: user.photoURL
+		auth
+			.signInWithPopup(provider)
+			.then(({ user }) => {
+				this.store.set("$root.user", {
+					email: user.email,
+					id: user.uid,
+					displayName: user.displayName,
+					photoURL: user.photoURL
+				});
+			})
+			.catch(error => {
+				let errorCode = error.code;
+				let errorMessage = error.message;
+				let toast = Toast.create({
+					message: `Login failed with error code ${errorCode}. ${errorMessage}`,
+					timeout: 15000
+				});
+				toast.open(this.store);
 			});
-		}).catch((error) => {
-			let errorCode = error.code;
-			let errorMessage = error.message;
-			let toast = Toast.create({
-				message: `Login failed with error code ${errorCode}. ${errorMessage}`,
-				timeout: 15000
-			});
-			toast.open(this.store);
-		});
 	}
 
 	signOut(e) {
 		e.preventDefault();
 		auth.signOut().then(() => {
-			this.store.delete('$root.user');
+			this.store.delete("$root.user");
 		});
 	}
 }

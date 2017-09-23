@@ -71,13 +71,12 @@ class Grid extends VDOM.Component {
 		);
 	}
 
-    onClick(e) {
-        let {instance} = this.props;
-        let {widget} = instance;
+	onClick(e) {
+		let { instance } = this.props;
+		let { widget } = instance;
 
-        if (widget.onClick)
-            instance.invoke("onClick", e, instance);
-    }
+		if (widget.onClick) instance.invoke("onClick", e, instance);
+	}
 
 	componentDidMount() {
 		this.unResize = ResizeManager.subscribe(::this.componentDidUpdate);

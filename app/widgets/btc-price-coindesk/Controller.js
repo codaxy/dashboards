@@ -3,8 +3,7 @@ import { Controller } from "cx/ui";
 const getBtcPrice = () =>
 	fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
 		.then(x => {
-			if (!x.ok)
-				throw new Error("Failed to fetch BTC price from CoinDesk.");
+			if (!x.ok) throw new Error("Failed to fetch BTC price from CoinDesk.");
 			return x;
 		})
 		.then(x => x.json())
@@ -15,7 +14,7 @@ const getBtcPrice = () =>
 export default class extends Controller {
 	onInit() {
 		this.timer = setInterval(::this.fetchPrice, 60 * 1000);
-        this.fetchPrice();
+		this.fetchPrice();
 	}
 
 	onDestroy() {
@@ -23,8 +22,8 @@ export default class extends Controller {
 	}
 
 	fetchPrice() {
-        getBtcPrice().then(p => {
-            this.store.set("btcPrice", p);
-        });
+		getBtcPrice().then(p => {
+			this.store.set("btcPrice", p);
+		});
 	}
 }
