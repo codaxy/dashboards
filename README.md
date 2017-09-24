@@ -1,23 +1,23 @@
 # Dashboards
 
 This application allows you to build personalized dashboards using drag &amp; drop. Dashboards consists out of widgets
-that are placed on the board. Widgets are simple to implement, so everyone can make the widgets they need.
+that are placed on the board. Widgets are simple to implement, so anyone can build a widget for his own dashboard.
 
 ### Technology Stack 
 
 Front-end:
-* CxJS
-* React
-* Babel
-* webpack
+* [CxJS](https://cxjs.io)
+* [React](https://https://facebook.github.io/react/)
+* [Babel](https://babeljs.io/)
+* [webpack](https://webpack.js.org/)
 
 Back-end:
-* Firebase
+* [Firebase](https://firebase.google.com/)
 
-Experimental Browser Features:
+Experimental browser features:
 
-* `display: grid` 
-* `IntersectionObserver` 
+* [`display: grid`](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
+* [`IntersectionObserver`](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
 
 These features are not yet fully supported in all browsers.
 
