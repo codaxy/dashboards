@@ -10,9 +10,9 @@ const getIssues = repo =>
 
 export default class extends Controller {
 	onInit() {
-		this.store.set("repo", this.repo);
+		this.store.set("$data.repo", this.repo);
 		getIssues(this.repo).then(p => {
-			this.store.set("issues", p);
+			this.store.set("$data.issues", p);
 		});
 	}
 }

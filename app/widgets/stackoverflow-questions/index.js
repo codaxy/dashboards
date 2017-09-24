@@ -5,13 +5,12 @@ const defaultProps = {};
 
 export default ({} = defaultProps) =>
 	<cx>
-		<div class="kpi-header">
+		<div class="kpi-header" controller={Controller}>
 			Hot SO Questions
-			<strong text:bind="repo" controller={{ type: Controller }} />
 		</div>
 		<div class="kpi-main" style="justify-content: start">
 			<ul>
-				<Repeater records:bind="questions">
+				<Repeater records:bind="$data.questions">
 					<li>
 						<a
 							href:bind="$record.link"

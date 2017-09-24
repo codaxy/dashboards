@@ -1,4 +1,4 @@
-import { Button } from "cx/widgets";
+import {Rescope} from "cx/widgets";
 
 import Controller from "./Controller";
 import { enableCultureSensitiveFormatting } from "cx/ui";
@@ -9,6 +9,7 @@ const defaultProps = {};
 
 export default (props = defaultProps) =>
 	<cx>
+		import {Rescope} from "cx/widgets";
 		<div class="kpi-header" controller={Controller}>
 			BTC Price
 		</div>

@@ -13,13 +13,13 @@ export default ({ repo } = defaultProps) =>
 	<cx>
 		<div class="kpi-header" ws controller={{ type: Controller, repo }}>
 			Recent Issues:
-			<a href="#" onClick={(e, {store}) => { e.preventDefault(); store.toggle('settings.visible'); }}>
-				<strong text:bind="repo"  />
+			<a href="#" onClick={(e, {store}) => { e.preventDefault(); store.toggle('$data.settings.visible'); }}>
+				<strong text:bind="$data.repo"  />
 			</a>
 		</div>
 		<div class="kpi-main" style="justify-content: start; align-items: start">
 			<ul>
-				<Repeater records:bind="issues">
+				<Repeater records:bind="$data.issues">
 					<li>
 						<a
 							href:bind="$record.html_url"
@@ -33,7 +33,7 @@ export default ({ repo } = defaultProps) =>
 		</div>
 		<div class="kpi-footer">
 			<a
-				href:tpl="https://github.com/{repo}/issues"
+				href:tpl="https://github.com/{$data.repo}/issues"
 				target="_blank"
 				rel="noopener"
 			>
@@ -42,7 +42,7 @@ export default ({ repo } = defaultProps) =>
 		</div>
 
 		<ContentResolver
-			visible:bind="settings.visible"
+			visible:bind="$data.settings.visible"
 			onResolve={()=>System.import('./settings').then(x=>x.default)}
 		/>
 	</cx>;

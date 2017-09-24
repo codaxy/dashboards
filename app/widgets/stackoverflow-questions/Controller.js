@@ -14,7 +14,7 @@ const getQuestions = repo =>
 export default class extends Controller {
 	onInit() {
 		getQuestions().then(p => {
-			this.store.set("questions", p);
+			this.store.set("$data.questions", p);
 		});
 	}
 }
