@@ -3,11 +3,11 @@ import { Repeater } from "cx/widgets";
 
 const defaultProps = {};
 
-export default ({ } = defaultProps) =>
+export default ({} = defaultProps) =>
 	<cx>
 		<div class="kpi-header">
 			Hot SO Questions
-			<strong text:bind="repo" controller={{ type: Controller, }} />
+			<strong text:bind="repo" controller={{ type: Controller }} />
 		</div>
 		<div class="kpi-main" style="justify-content: start">
 			<ul>

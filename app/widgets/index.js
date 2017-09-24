@@ -100,14 +100,15 @@ registerWidget(
 );
 
 registerWidget(
-    "stackoverflow-questions",
-    props => System.import("./stackoverflow-questions").then(x => x.default(props)),
-    {
-        description: "Hot questions on StackOverflow",
-        box: {
-            width: 20,
-            height: 12,
-            class: "kpi"
-        }
-    }
+	"stackoverflow-questions",
+	props =>
+		System.import("./stackoverflow-questions").then(x => x.default(props)),
+	{
+		description: "Hot questions on StackOverflow",
+		box: {
+			width: 20,
+			height: 12,
+			class: "kpi"
+		}
+	}
 );

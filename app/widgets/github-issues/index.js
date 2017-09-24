@@ -3,7 +3,7 @@ import { enableCultureSensitiveFormatting } from "cx/ui";
 
 enableCultureSensitiveFormatting();
 
-import { Repeater } from "cx/widgets";
+import { Repeater, ContentResolver } from "cx/widgets";
 
 const defaultProps = {
 	repo: "codaxy/cxjs"
@@ -11,11 +11,13 @@ const defaultProps = {
 
 export default ({ repo } = defaultProps) =>
 	<cx>
-		<div class="kpi-header">
-			Recent Issues:{" "}
-			<strong text:bind="repo" controller={{ type: Controller, repo }} />
+		<div class="kpi-header" ws controller={{ type: Controller, repo }}>
+			Recent Issues:
+			<a href="#" onClick={(e, {store}) => { e.preventDefault(); store.toggle('settings.visible'); }}>
+				<strong text:bind="repo"  />
+			</a>
 		</div>
-		<div class="kpi-main" style="justify-content: start">
+		<div class="kpi-main" style="justify-content: start; align-items: start">
 			<ul>
 				<Repeater records:bind="issues">
 					<li>
@@ -38,4 +40,9 @@ export default ({ repo } = defaultProps) =>
 				GitHub.com
 			</a>
 		</div>
+
+		<ContentResolver
+			visible:bind="settings.visible"
+			onResolve={()=>System.import('./settings').then(x=>x.default)}
+		/>
 	</cx>;
