@@ -48,6 +48,8 @@ body {
    background: white;
    box-shadow: 0 0 1px rgba(0,0,0,.26);
    font-size: 13px;
+   display: flex;
+   flex-direction: column;
 
    transform: translateX(-300px);
    transition: transform 0.2s linear;
@@ -120,8 +122,14 @@ p {
 
 .userinfo {
    padding: 12px;
-   background-color: #94cdef;
-   background: linear-gradient(to left, #79cdff, #9de4f1);
-   border-left: 3px solid #0677b9;
+   //background-color: #94cdef;
+   //background: linear-gradient(to left, #79cdff, #9de4f1);
+   //border-left: 3px solid #0677b9;
+   border-top: 1px solid lightgray;
    position: relative;
+   text-align: center;
+
+   img {
+      border-radius: 50%;
+   }
 }

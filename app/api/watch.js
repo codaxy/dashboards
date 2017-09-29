@@ -5,9 +5,19 @@ export default function watch(path, callback) {
 
 	let cb = x => callback(x.val());
 
-	ref.on("value", cb);
+	let subscribed = false;
+
+	ref.once('value')
+		.then(() => {
+            ref.on("value", cb);
+            subscribed = true;
+		})
+		.catch(err => {
+			callback(null, err)
+		});
 
 	return () => {
-		ref.off("value", cb);
+		if (subscribed)
+			ref.off("value", cb);
 	};
 }

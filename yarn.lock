@@ -1365,14 +1365,6 @@ create-hmac@^1.1.0, create-hmac@^1.1.2:
     create-hash "^1.1.0"
     inherits "^2.0.1"
 
-create-react-class@^15.6.0:
-  version "15.6.0"
-  resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.6.0.tgz#ab448497c26566e1e29413e883207d57cfe7bed4"
-  dependencies:
-    fbjs "^0.8.9"
-    loose-envify "^1.3.1"
-    object-assign "^4.1.1"
-
 cross-spawn@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-3.0.1.tgz#1256037ecb9f0c5f79e3d6ef135e30770184b982"
@@ -1519,9 +1511,9 @@ cx-react@^17.4.1:
   version "17.4.1"
   resolved "https://registry.yarnpkg.com/cx-react/-/cx-react-17.4.1.tgz#124c7d8606a76b6cfdf0b6a8cf5998a92bc66d20"
 
-cx@^17.8.11:
-  version "17.9.8"
-  resolved "https://registry.yarnpkg.com/cx/-/cx-17.9.8.tgz#533613fc18e0b2b6f79f913a4798eaaec76ad9bd"
+cx@^17.9.11:
+  version "17.9.11"
+  resolved "https://registry.yarnpkg.com/cx/-/cx-17.9.11.tgz#490791b4cc4589ced7b53c8d69cd23bc4ae34c69"
   dependencies:
     intl-io "^0.2.5"
     route-parser "^0.0.5"
@@ -1565,13 +1557,6 @@ deep-equal@^1.0.1:
 deep-extend@~0.4.0:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.4.1.tgz#efe4113d08085f4e6f9687759810f807469e2253"
-
-default-gateway@^2.2.2:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/default-gateway/-/default-gateway-2.5.0.tgz#78e24dbd2e1df7490c2b8050515b8e816bfa7da5"
-  dependencies:
-    execa "^0.7.0"
-    ip-regex "^2.1.0"
 
 define-properties@^1.1.2:
   version "1.1.2"
@@ -2007,9 +1992,9 @@ faye-websocket@~0.11.0:
   dependencies:
     websocket-driver ">=0.5.1"
 
-fbjs@^0.8.9:
-  version "0.8.12"
-  resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.12.tgz#10b5d92f76d45575fd63a217d4ea02bea2f8ed04"
+fbjs@^0.8.16:
+  version "0.8.16"
+  resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.16.tgz#5e67432f550dc41b572bf55847b8aca64e5337db"
   dependencies:
     core-js "^1.0.0"
     isomorphic-fetch "^2.1.1"
@@ -2524,12 +2509,11 @@ ini@~1.3.0:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.4.tgz#0537cb79daf59b59a1a517dff706c86ec039162e"
 
-internal-ip@^2.0.2:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/internal-ip/-/internal-ip-2.0.3.tgz#ed3cf9b671ac7ff23037bfacad42eb439cd9546c"
+internal-ip@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/internal-ip/-/internal-ip-1.2.0.tgz#ae9fbf93b984878785d50a8de1b356956058cf5c"
   dependencies:
-    default-gateway "^2.2.2"
-    ipaddr.js "^1.5.2"
+    meow "^3.3.0"
 
 interpret@^1.0.0:
   version "1.0.1"
@@ -2549,10 +2533,6 @@ invert-kv@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-1.0.0.tgz#104a8e4aaca6d3d8cd157a8ef8bfab2d7a3ffdb6"
 
-ip-regex@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/ip-regex/-/ip-regex-2.1.0.tgz#fa78bf5d2e6913c911ce9f819ee5146bb6d844e9"
-
 ip@^1.1.0, ip@^1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/ip/-/ip-1.1.5.tgz#bdded70114290828c0a039e72ef25f5aaec4354a"
@@ -2560,10 +2540,6 @@ ip@^1.1.0, ip@^1.1.5:
 ipaddr.js@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-1.1.1.tgz#c791d95f52b29c1247d5df80ada39b8a73647230"
-
-ipaddr.js@^1.5.2:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-1.5.2.tgz#d4b505bde9946987ccf0fc58d9010ff9607e3fa0"
 
 is-absolute-url@^2.0.0:
   version "2.1.0"
@@ -3088,7 +3064,7 @@ memory-fs@^0.4.0, memory-fs@~0.4.1:
     errno "^0.1.3"
     readable-stream "^2.0.1"
 
-meow@^3.7.0:
+meow@^3.3.0, meow@^3.7.0:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/meow/-/meow-3.7.0.tgz#72cb668b425228290abbfa856892587308a801fb"
   dependencies:
@@ -3889,9 +3865,9 @@ preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
-prettier@^1.5.3:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.7.0.tgz#47481588f41f7c90f63938feb202ac82554e7150"
+prettier@^1.7.2:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.7.2.tgz#81371e64018aafc69cf1031956c70e029339f54e"
 
 pretty-error@^2.0.2:
   version "2.0.2"
@@ -3926,12 +3902,13 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10:
-  version "15.5.10"
-  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.10.tgz#2797dfc3126182e3a95e3dfbb2e893ddd7456154"
+prop-types@^15.6.0:
+  version "15.6.0"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
-    fbjs "^0.8.9"
+    fbjs "^0.8.16"
     loose-envify "^1.3.1"
+    object-assign "^4.1.1"
 
 proxy-addr@~1.1.2:
   version "1.1.2"
@@ -4025,24 +4002,23 @@ rc@~1.1.6:
     minimist "^1.2.0"
     strip-json-comments "~1.0.4"
 
-react-dom@^15.6.1:
-  version "15.6.1"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.6.1.tgz#2cb0ed4191038e53c209eb3a79a23e2a4cf99470"
+react-dom@^16.0.0:
+  version "16.0.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.0.0.tgz#9cc3079c3dcd70d4c6e01b84aab2a7e34c303f58"
   dependencies:
-    fbjs "^0.8.9"
+    fbjs "^0.8.16"
     loose-envify "^1.1.0"
-    object-assign "^4.1.0"
-    prop-types "^15.5.10"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
 
-react@^15.6.1:
-  version "15.6.1"
-  resolved "https://registry.yarnpkg.com/react/-/react-15.6.1.tgz#baa8434ec6780bde997cdc380b79cd33b96393df"
+react@^16.0.0:
+  version "16.0.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.0.0.tgz#ce7df8f1941b036f02b2cca9dbd0cb1f0e855e2d"
   dependencies:
-    create-react-class "^15.6.0"
-    fbjs "^0.8.9"
+    fbjs "^0.8.16"
     loose-envify "^1.1.0"
-    object-assign "^4.1.0"
-    prop-types "^15.5.10"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
@@ -4909,9 +4885,9 @@ webpack-dev-middleware@^1.11.0:
     range-parser "^1.0.3"
     time-stamp "^2.0.0"
 
-webpack-dev-server@^2.7.1:
-  version "2.8.2"
-  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-2.8.2.tgz#abd61f410778cc4c843d7cebbf41465b1ab7734c"
+webpack-dev-server@^2.9.1:
+  version "2.9.1"
+  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-2.9.1.tgz#7ac9320b61b00eb65b2109f15c82747fc5b93585"
   dependencies:
     ansi-html "0.0.7"
     array-includes "^3.0.3"
@@ -4923,7 +4899,7 @@ webpack-dev-server@^2.7.1:
     express "^4.13.3"
     html-entities "^1.2.0"
     http-proxy-middleware "~0.17.4"
-    internal-ip "^2.0.2"
+    internal-ip "1.2.0"
     ip "^1.1.5"
     loglevel "^1.4.1"
     opn "^5.1.0"

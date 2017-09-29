@@ -42,8 +42,12 @@ export default (
 			</header>
 			<aside class="aside">
 				<h1>Dashboards</h1>
-				<UserAccount />
-				<dl>
+				<dl style="flex: 1 1 0%">
+					<dt>
+						<Link href="~/new" url:bind="url">
+							Create New Dashboard
+						</Link>
+					</dt>
 					<dt>
 						<Link href="~/" url:bind="url">
 							Home
@@ -59,12 +63,12 @@ export default (
 						</dd>
 					</Repeater>
 					<dt>
-						<Link href="~/new" url:bind="url">
-							Create New Dashboard
+						<Link href="~/about" url:bind="url">
+							About
 						</Link>
 					</dt>
 				</dl>
-				<ContentPlaceholder name="aside" />
+				<UserAccount />
 			</aside>
 		</div>
 	</cx>

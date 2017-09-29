@@ -7,6 +7,7 @@ import Default from "./default";
 import SignIn from "./sign-in";
 import New from "./new";
 import Home from "./home";
+import About from "./about";
 
 export default (
 	<cx>
@@ -24,6 +25,9 @@ export default (
 			</Route>
 			<Route route="~/new" url:bind="url">
 				<New />
+			</Route>
+			<Route route="~/about" url:bind="url">
+				<About />
 			</Route>
 			<Route route="~/:dashboardId" url:bind="url">
 				<Default />

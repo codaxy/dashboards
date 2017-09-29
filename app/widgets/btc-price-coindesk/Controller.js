@@ -22,8 +22,8 @@ export default class extends Controller {
 	}
 
 	fetchPrice() {
-		getBtcPrice().then(p => {
-			this.store.set("btcPrice", p);
-		});
-	}
+        getBtcPrice().then(p => {
+            this.store.set("btcPrice", p);
+        });
+    }
 }

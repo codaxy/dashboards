@@ -9,9 +9,10 @@ import {
 	Sandbox,
 	TextField,
 	ColorField,
-	Window
+	Window,
+	Toast
 } from "cx/widgets";
-import { Controller, LabelsTopLayout } from "cx/ui";
+import { Controller, LabelsTopLayout, History } from "cx/ui";
 import { getSearchQueryPredicate } from "cx/util";
 import DashboardWidget from "../../components/DashboardWidget";
 import { GridLayout } from "../../components/GridLayout";
@@ -35,8 +36,20 @@ class PageControlller extends Controller {
 		let id = this.store.get("$route.dashboardId");
 		let dashboardPath = `dashboard/${id}`;
 
-		this.unsubscribe = watch(dashboardPath, w => {
-			this.store.set("$page.dashboard", w);
+		this.unsubscribe = watch(dashboardPath, (w, error) => {
+			if (error) {
+				Toast
+					.create({
+						children: 'Error occurred while loading dashboard: ' + error.toString(),
+						timeout: 10000,
+						mod: 'error'
+					})
+					.open();
+				console.log(error);
+				History.pushState({}, null, '~/');
+			} else {
+                this.store.set("$page.dashboard", w);
+            }
 		});
 
 		this.addTrigger("autoSave", ["$page.dashboard"], w => {

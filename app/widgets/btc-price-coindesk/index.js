@@ -9,7 +9,7 @@ const defaultProps = {};
 
 export default (props = defaultProps) =>
 	<cx>
-		import {Rescope} from "cx/widgets";
+		<Rescope bind="$data">
 		<div class="kpi-header" controller={Controller}>
 			BTC Price
 		</div>
@@ -21,7 +21,5 @@ export default (props = defaultProps) =>
 				www.coindesk.com
 			</a>
 		</div>
-		{/*<div class="widget-toolbar">*/}
-		{/*<Button mod="hollow" icon="close" />*/}
-		{/*</div>*/}
+		</Rescope>
 	</cx>;

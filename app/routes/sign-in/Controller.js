@@ -1,4 +1,4 @@
-import { Controller } from "cx/ui";
+import { Controller, History } from "cx/ui";
 import { Toast } from "cx/widgets";
 
 import { firebase, auth } from "../../api/app";
@@ -28,6 +28,7 @@ export default class extends Controller {
 					displayName: user.displayName,
 					photoURL: user.photoURL
 				});
+				History.replaceState({}, null, "~/");
 			})
 			.catch(error => {
 				let errorCode = error.code;
