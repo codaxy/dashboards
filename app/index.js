@@ -3,6 +3,7 @@ import { Url, History, Widget, startAppLoop } from "cx/ui";
 import { Timing, Debug } from "cx/util";
 //css
 import "./index.scss";
+import "cx-theme-aquamarine";
 
 //store
 const store = new Store();

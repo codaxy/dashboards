@@ -1511,6 +1511,10 @@ cx-react@^17.4.1:
   version "17.4.1"
   resolved "https://registry.yarnpkg.com/cx-react/-/cx-react-17.4.1.tgz#124c7d8606a76b6cfdf0b6a8cf5998a92bc66d20"
 
+cx-theme-aquamarine@^17.9.0:
+  version "17.9.0"
+  resolved "https://registry.yarnpkg.com/cx-theme-aquamarine/-/cx-theme-aquamarine-17.9.0.tgz#c33482b0bbf3b0f93afd12265afa506df4cfc9d8"
+
 cx@^17.9.11:
   version "17.9.11"
   resolved "https://registry.yarnpkg.com/cx/-/cx-17.9.11.tgz#490791b4cc4589ced7b53c8d69cd23bc4ae34c69"

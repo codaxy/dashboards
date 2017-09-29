@@ -1,6 +1,8 @@
 $cx-include-global-rules: true;
 
-@import "~cx/src/variables";
+$cx-default-font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+
+@import "~cx-theme-aquamarine/src/variables";
 
 $cx-element-style-map: cx-deep-map-merge($cx-element-style-map, (
   body: (
@@ -10,7 +12,7 @@ $cx-element-style-map: cx-deep-map-merge($cx-element-style-map, (
     font-weight: 500
   )
 ));
-@import "~cx/src/index";
+@import "~cx-theme-aquamarine/src/index";
 
 @import "components/index";
 @import "layout/index";
