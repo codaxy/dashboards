@@ -21,9 +21,13 @@ export default class extends Controller {
 				if (userId)
 					return (associate = database
 						.ref(`user/${userId}/dashboards/${id}`)
-						.set({
-							title
-						}));
+						.set({ title }));
+				else {
+					let dashboards = JSON.parse(localStorage.getItem('dashboards') || '{}');
+					dashboards[id] = { title };
+					localStorage.setItem('dashboards', JSON.stringify(dashboards));
+					this.store.set('localStorageTimestamp', Date.now());
+				}
 			})
 			.then(() => {
 				History.replaceState({}, null, `~/${id}`);

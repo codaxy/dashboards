@@ -10,7 +10,7 @@ export default (
 		</LinkButton>
 		<FlexRow controller={Controller} padding spacing wrap>
 			<Section mod="card" style="margin: 10px" title="My Dashboards" hLevel={4}>
-				<div visible:expr="!!{user.id}">
+				<div>
 					<Repeater records:bind="dashboards">
 						<LinkButton
 							mod="hollow"
