@@ -1,7 +1,7 @@
 import { Controller } from "cx/ui";
 
 const getDollarToEuro = () =>
-	fetch("http://api.fixer.io/latest?base=USD")
+	fetch("https://api.fixer.io/latest?base=USD")
 		.then(x => {
 			if (!x.ok) throw new Error("Failed to fetch dollar to euro from http://fixer.io/.");
 			return x;
