@@ -87,6 +87,20 @@ registerWidget(
 );
 
 registerWidget(
+	"dollar-to-euro",
+	props =>
+		System.import("./dollar-to-euro").then(x => x.default(props)),
+	{
+		description: "Conversion dollar to euro",
+		box: {
+			width: 16,
+			height: 8,
+			class: "kpi"
+		}
+	}
+);
+
+registerWidget(
 	"github-issues",
 	props => System.import("./github-issues").then(x => x.default(props)),
 	{
