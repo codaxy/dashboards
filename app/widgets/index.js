@@ -101,6 +101,34 @@ registerWidget(
 );
 
 registerWidget(
+	"popular-stackoverflow-tags",
+	props =>
+		System.import("./popular-stackoverflow-tags").then(x => x.default(props)),
+	{
+		description: "Poular StackOverflow tags",
+		box: {
+			width: 16,
+			height: 8,
+			class: "kpi"
+		}
+	}
+);
+
+registerWidget(
+	"news",
+	props =>
+		System.import("./news").then(x => x.default(props)),
+	{
+		description: "News",
+		box: {
+			width: 20,
+			height: 12,
+			class: "kpi"
+		}
+	}
+);
+
+registerWidget(
 	"github-issues",
 	props => System.import("./github-issues").then(x => x.default(props)),
 	{
