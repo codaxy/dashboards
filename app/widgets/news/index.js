@@ -13,28 +13,13 @@ export default ({} = defaultProps) =>
 				<Repeater records:bind="$data.articles">
 					<li>
 						<div>
-							Author:	 <strong
-							target="_blank"
-							rel="noopener"
-							text:bind="$record.author"
-							/>
-							<br/>Title: <strong
-							target="_blank"
-							rel="noopener"
-							text:bind="$record.title"
-							/>	
-							<br/><br/>Description: <p
-							target="_blank"
-							rel="noopener"
-							text:bind="$record.description"
-							/>
-							URL: <a
+							Title: <a
 							href:bind="$record.url"
 							target="_blank"
 							rel="noopener"
-							text:bind="$record.url"
+							text:bind="$record.title"
 							/>
-							<br/><br/>
+							<br/>
 						</div>
 					</li>
 				</Repeater>
