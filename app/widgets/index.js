@@ -101,6 +101,20 @@ registerWidget(
 );
 
 registerWidget(
+	"news",
+	props =>
+		System.import("./news").then(x => x.default(props)),
+	{
+		description: "News",
+		box: {
+			width: 20,
+			height: 12,
+			class: "kpi"
+		}
+	}
+);
+
+registerWidget(
 	"github-issues",
 	props => System.import("./github-issues").then(x => x.default(props)),
 	{
