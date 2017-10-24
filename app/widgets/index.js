@@ -7,7 +7,12 @@ export function registerWidget(type, factory, defaultProps) {
 }
 
 export function createWidget(type, props) {
-	return widgets[type](props);
+	let factory = widgets[type];
+
+	if (!factory)
+		factory = removedWidgetFactory;
+
+	return factory(props);
 }
 
 export function getWidgetTypes() {
@@ -20,6 +25,12 @@ export function getWidgetTypeProps() {
 		...props[type]
 	}));
 }
+
+const removedWidgetFactory = props => <cx>
+	<div>
+		This widget type has been removed. Please remove it from the dashboard.
+	</div>
+</cx>;
 
 registerWidget(
 	"text",
