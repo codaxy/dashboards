@@ -101,7 +101,7 @@ export default (
 			<FlexCol visible:bind="$page.add" class="drawer">
 				<TextField
 					value:bind="$page.search"
-					style="width: 100%; margin: 15px"
+					style="margin: 15px 10px; width: auto"
 					inputStyle="border-color: transparent"
 					placeholder="Search..."
 				/>
