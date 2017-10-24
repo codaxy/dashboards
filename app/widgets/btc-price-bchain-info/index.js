@@ -2,6 +2,7 @@ import {Rescope} from "cx/widgets";
 
 import Controller from "./Controller";
 import {enableCultureSensitiveFormatting} from "cx/ui";
+import {LoadingOverlay} from "../../components/LoadingOverlay";
 
 enableCultureSensitiveFormatting();
 
@@ -14,7 +15,13 @@ export default (props = defaultProps) =>
                 BTC Price
             </div>
             <div class="kpi-main">
-                <div class="kpi-value" text:tpl="{btcPrice:currency;;0}"/>
+                <LoadingOverlay
+                    status:bind="status"
+                    error:bind="error"
+                    onRetry="fetchPrice"
+                >
+                    <div class="kpi-value" text:tpl="{btcPrice:currency;;0}"/>
+                </LoadingOverlay>
             </div>
             <div class="kpi-footer">
                 <a href="https://blockchain.info/" target="_blank" rel="noopener">
