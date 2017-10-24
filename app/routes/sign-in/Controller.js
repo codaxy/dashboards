@@ -18,11 +18,11 @@ export default class extends Controller {
 		this.signInWithProvider(provider);
 	}
 
-    signInWithGitHub(e) {
-        e.preventDefault();
-        let provider = new firebase.auth.GithubAuthProvider();
-        this.signInWithProvider(provider);
-    }
+	signInWithGitHub(e) {
+		e.preventDefault();
+		let provider = new firebase.auth.GithubAuthProvider();
+		this.signInWithProvider(provider);
+	}
 
 	signInWithProvider(provider) {
 		auth
@@ -42,7 +42,7 @@ export default class extends Controller {
 				let toast = Toast.create({
 					message: `Login failed with error code ${errorCode}. ${errorMessage}`,
 					timeout: 15000,
-					mod: 'error'
+					mod: "error"
 				});
 				toast.open(this.store);
 			});

@@ -23,10 +23,12 @@ export default class extends Controller {
 						.ref(`user/${userId}/dashboards/${id}`)
 						.set({ title }));
 				else {
-					let dashboards = JSON.parse(localStorage.getItem('dashboards') || '{}');
+					let dashboards = JSON.parse(
+						localStorage.getItem("dashboards") || "{}"
+					);
 					dashboards[id] = { title };
-					localStorage.setItem('dashboards', JSON.stringify(dashboards));
-					this.store.set('localStorageTimestamp', Date.now());
+					localStorage.setItem("dashboards", JSON.stringify(dashboards));
+					this.store.set("localStorageTimestamp", Date.now());
 				}
 			})
 			.then(() => {

@@ -1,9 +1,12 @@
 import { Controller } from "cx/ui";
 
 const getArticles = () =>
-	fetch("https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=c03cf67d0e414ff3a578badda1b368cf")
+	fetch(
+		"https://newsapi.org/v1/articles?source=techcrunch&sortBy=latest&apiKey=c03cf67d0e414ff3a578badda1b368cf"
+	)
 		.then(x => {
-			if (!x.ok) throw new Error("Failed to fetch news from https://newsapi.org.");
+			if (!x.ok)
+				throw new Error("Failed to fetch news from https://newsapi.org.");
 			return x;
 		})
 		.then(x => x.json())
@@ -22,8 +25,8 @@ export default class extends Controller {
 	}
 
 	fetchArticles() {
-        getArticles().then(p => {
-            this.store.set("$data.articles", p);
-        });
-    }
+		getArticles().then(p => {
+			this.store.set("$data.articles", p);
+		});
+	}
 }

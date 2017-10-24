@@ -5,7 +5,8 @@ enableCultureSensitiveFormatting();
 
 const defaultProps = {};
 
-export default (props = defaultProps) =>
+export default (props = defaultProps) => (
 	<cx>
 		<div>Text</div>
-	</cx>;
+	</cx>
+);

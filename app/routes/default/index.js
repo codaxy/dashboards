@@ -25,56 +25,57 @@ import watch from "../../api/watch";
 
 class PageControlller extends Controller {
 	onInit() {
-        this.store.set(
-            "widgets",
-            getWidgetTypeProps().map(w => ({
-                id: w.type,
-                ...w
-            }))
-        );
+		this.store.set(
+			"widgets",
+			getWidgetTypeProps().map(w => ({
+				id: w.type,
+				...w
+			}))
+		);
 
-        let id = this.store.get("$route.dashboardId");
-        let dashboardPath = `dashboard/${id}`;
+		let id = this.store.get("$route.dashboardId");
+		let dashboardPath = `dashboard/${id}`;
 
-        this.unsubscribe = watch(dashboardPath, (w, error) => {
-            if (error) {
-                Toast
-                    .create({
-                        children: 'Error occurred while loading dashboard: ' + error.toString(),
-                        timeout: 10000,
-                        mod: 'error'
-                    })
-                    .open();
-                console.log(error);
-                History.pushState({}, null, '~/');
-            } else {
-                this.store.set("$page.dashboard", w);
-            }
-        });
+		this.unsubscribe = watch(dashboardPath, (w, error) => {
+			if (error) {
+				Toast.create({
+					children:
+						"Error occurred while loading dashboard: " + error.toString(),
+					timeout: 10000,
+					mod: "error"
+				}).open();
+				console.log(error);
+				History.pushState({}, null, "~/");
+			} else {
+				this.store.set("$page.dashboard", w);
+			}
+		});
 
-        this.addTrigger("autoSave", ["$page.dashboard"], w => {
-            database.ref(dashboardPath).set(w);
-        });
+		this.addTrigger("autoSave", ["$page.dashboard"], w => {
+			database.ref(dashboardPath).set(w);
+		});
 
-        this.addTrigger(
-            "updateTitle",
-            ["$page.dashboard.title", "user.id"],
-            (title, userId) => {
-                if (title !== undefined) {
-                    if (userId)
-                        database.ref(`user/${userId}/dashboards/${id}/title`).set(title);
-                    else {
-                        let dashboards = JSON.parse(localStorage.getItem('dashboards') || '{}');
-                        if (dashboards[id]) {
-                            dashboards[id].title = title;
-                            localStorage.setItem('dashboards', JSON.stringify(dashboards));
-                            this.store.set('localStorageTimestamp', Date.now());
-                        }
-                    }
-                }
-            }
-        );
-    }
+		this.addTrigger(
+			"updateTitle",
+			["$page.dashboard.title", "user.id"],
+			(title, userId) => {
+				if (title !== undefined) {
+					if (userId)
+						database.ref(`user/${userId}/dashboards/${id}/title`).set(title);
+					else {
+						let dashboards = JSON.parse(
+							localStorage.getItem("dashboards") || "{}"
+						);
+						if (dashboards[id]) {
+							dashboards[id].title = title;
+							localStorage.setItem("dashboards", JSON.stringify(dashboards));
+							this.store.set("localStorageTimestamp", Date.now());
+						}
+					}
+				}
+			}
+		);
+	}
 
 	onDestroy() {
 		this.unsubscribe();

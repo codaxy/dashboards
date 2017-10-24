@@ -3,7 +3,7 @@ import { Repeater } from "cx/widgets";
 
 const defaultProps = {};
 
-export default ({} = defaultProps) =>
+export default ({} = defaultProps) => (
 	<cx>
 		<div class="kpi-header" controller={Controller}>
 			News
@@ -23,12 +23,9 @@ export default ({} = defaultProps) =>
 			</ul>
 		</div>
 		<div class="kpi-footer">
-			<a
-				href:tpl="https://newsapi.org"
-				target="_blank"
-				rel="noopener"
-			>
+			<a href:tpl="https://newsapi.org" target="_blank" rel="noopener">
 				newsapi.org
 			</a>
 		</div>
-	</cx>;
+	</cx>
+);

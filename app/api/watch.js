@@ -7,17 +7,17 @@ export default function watch(path, callback) {
 
 	let subscribed = false;
 
-	ref.once('value')
+	ref
+		.once("value")
 		.then(() => {
-            ref.on("value", cb);
-            subscribed = true;
+			ref.on("value", cb);
+			subscribed = true;
 		})
 		.catch(err => {
-			callback(null, err)
+			callback(null, err);
 		});
 
 	return () => {
-		if (subscribed)
-			ref.off("value", cb);
+		if (subscribed) ref.off("value", cb);
 	};
 }

@@ -3,7 +3,10 @@ import { Controller } from "cx/ui";
 const getDollarToEuro = () =>
 	fetch("https://api.fixer.io/latest?base=USD")
 		.then(x => {
-			if (!x.ok) throw new Error("Failed to fetch dollar to euro from http://fixer.io/.");
+			if (!x.ok)
+				throw new Error(
+					"Failed to fetch dollar to euro from http://fixer.io/."
+				);
 			return x;
 		})
 		.then(x => x.json())
@@ -22,8 +25,8 @@ export default class extends Controller {
 	}
 
 	fetchConversion() {
-        getDollarToEuro().then(p => {
-            this.store.set("dollarToEuro", p);
-        });
-    }
+		getDollarToEuro().then(p => {
+			this.store.set("dollarToEuro", p);
+		});
+	}
 }

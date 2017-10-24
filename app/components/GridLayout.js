@@ -56,15 +56,16 @@ class Grid extends VDOM.Component {
 					ref={createRef(this, "gridEl")}
 				>
 					{this.state &&
-						this.state.dd == "hover" &&
-						<div
-							className={CSS.element(baseClass, "drop-marker")}
-							style={{
-								gridArea: `${this.state.dropRow + 1} / ${this.state.dropCol +
-									1} / span ${this.state.dropHeight} / span ${this.state
-									.dropWidth}`
-							}}
-						/>}
+						this.state.dd == "hover" && (
+							<div
+								className={CSS.element(baseClass, "drop-marker")}
+								style={{
+									gridArea: `${this.state.dropRow + 1} / ${this.state.dropCol +
+										1} / span ${this.state.dropHeight} / span ${this.state
+										.dropWidth}`
+								}}
+							/>
+						)}
 					{children}
 				</div>
 			</div>

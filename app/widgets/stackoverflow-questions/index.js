@@ -3,7 +3,7 @@ import { Repeater } from "cx/widgets";
 
 const defaultProps = {};
 
-export default ({} = defaultProps) =>
+export default ({} = defaultProps) => (
 	<cx>
 		<div class="kpi-header" controller={Controller}>
 			Hot SO Questions
@@ -31,4 +31,5 @@ export default ({} = defaultProps) =>
 				StackOverflow.com
 			</a>
 		</div>
-	</cx>;
+	</cx>
+);

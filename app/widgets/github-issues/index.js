@@ -9,12 +9,18 @@ const defaultProps = {
 	repo: "codaxy/cxjs"
 };
 
-export default ({ repo } = defaultProps) =>
+export default ({ repo } = defaultProps) => (
 	<cx>
 		<div class="kpi-header" ws controller={{ type: Controller, repo }}>
 			Recent Issues:
-			<a href="#" onClick={(e, {store}) => { e.preventDefault(); store.toggle('$data.settings.visible'); }}>
-				<strong text:bind="$data.repo"  />
+			<a
+				href="#"
+				onClick={(e, { store }) => {
+					e.preventDefault();
+					store.toggle("$data.settings.visible");
+				}}
+			>
+				<strong text:bind="$data.repo" />
 			</a>
 		</div>
 		<div class="kpi-main" style="justify-content: start; align-items: start">
@@ -43,6 +49,7 @@ export default ({ repo } = defaultProps) =>
 
 		<ContentResolver
 			visible:bind="$data.settings.visible"
-			onResolve={()=>System.import('./settings').then(x=>x.default)}
+			onResolve={() => System.import("./settings").then(x => x.default)}
 		/>
-	</cx>;
+	</cx>
+);

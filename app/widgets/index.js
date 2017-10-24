@@ -9,8 +9,7 @@ export function registerWidget(type, factory, defaultProps) {
 export function createWidget(type, props) {
 	let factory = widgets[type];
 
-	if (!factory)
-		factory = removedWidgetFactory;
+	if (!factory) factory = removedWidgetFactory;
 
 	return factory(props);
 }
@@ -26,11 +25,13 @@ export function getWidgetTypeProps() {
 	}));
 }
 
-const removedWidgetFactory = props => <cx>
-	<div>
-		This widget type has been removed. Please remove it from the dashboard.
-	</div>
-</cx>;
+const removedWidgetFactory = props => (
+	<cx>
+		<div>
+			This widget type has been removed. Please remove it from the dashboard.
+		</div>
+	</cx>
+);
 
 registerWidget(
 	"text",
@@ -99,8 +100,7 @@ registerWidget(
 
 registerWidget(
 	"dollar-to-euro",
-	props =>
-		System.import("./dollar-to-euro").then(x => x.default(props)),
+	props => System.import("./dollar-to-euro").then(x => x.default(props)),
 	{
 		description: "Conversion dollar to euro",
 		box: {
@@ -113,8 +113,7 @@ registerWidget(
 
 registerWidget(
 	"news",
-	props =>
-		System.import("./news").then(x => x.default(props)),
+	props => System.import("./news").then(x => x.default(props)),
 	{
 		description: "News",
 		box: {
