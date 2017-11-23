@@ -1,14 +1,24 @@
 .cxb-gridlayout {
+  padding: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: auto;
+  overflow: hidden;
   font-size: 14px;
   transition: margin 0.3s;
   background: gray;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+
+  &.cxs-scrollable {
+    display: block;
+    overflow: auto;
+
+    .cxe-gridlayout-grid {
+      transform-origin: left top;
+    }
+  }
 }
 
 .cxe-gridlayout-grid {

@@ -11,7 +11,7 @@ body {
 }
 
 .header {
-   padding: 1.5em;
+   padding: 1em 1.5em;
    background: white;
    position: fixed;
    transition: all 0.2s linear;
@@ -27,6 +27,8 @@ body {
       font-size: 20px;
       margin: 0;
       font-weight: 400;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       //color: white;
    }
 

@@ -169,10 +169,14 @@ class Grid extends VDOM.Component {
 		let unitSize = (this.unitSize = Math.floor(
 			Math.min(unitWidth, unitHeight, 25)
 		));
-		let scale = (this.scale = unitSize / 25);
+		let scale = this.scale = unitSize / 25;
 
-		if (data.minScale > 0 && scale < data.minScale)
-			scale = data.minScale;
+		if (data.minScale > 0 && scale < data.minScale) {
+            scale = data.minScale;
+            this.el.classList.add('cxs-scrollable');
+        }
+        else
+            this.el.classList.remove('cxs-scrollable');
 
 		//this.gridEl.style.width = `${data.columns * unitSize}px`;
 		//this.gridEl.style.height = `${data.rows * unitSize}px`;

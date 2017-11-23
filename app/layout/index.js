@@ -42,7 +42,7 @@ export default (
 			</header>
 			<aside class="aside">
 				<h1>Dashboards</h1>
-				<dl style="flex: 1 1 0%">
+				<dl style="flex: 1 1 0%; overflow: auto">
 					<dt>
 						<Link href="~/new" url:bind="url">
 							Create New Dashboard
