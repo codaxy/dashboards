@@ -13,7 +13,7 @@ import {
 	Toast
 } from "cx/widgets";
 import { Controller, LabelsTopLayout, History } from "cx/ui";
-import { getSearchQueryPredicate } from "cx/util";
+import { getSearchQueryPredicate, isNonEmptyArray } from "cx/util";
 import DashboardWidget from "../../components/DashboardWidget";
 import { GridLayout } from "../../components/GridLayout";
 import { OnScreenLoader } from "../../components/OnScreenLoader";
@@ -48,6 +48,8 @@ class PageControlller extends Controller {
 				History.pushState({}, null, "~/");
 			} else {
 				this.store.set("$page.dashboard", w);
+				if (!isNonEmptyArray(w.widgets))
+					this.store.set('$page.add', true);
 			}
 		});
 
