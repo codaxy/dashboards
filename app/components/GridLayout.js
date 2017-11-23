@@ -6,7 +6,8 @@ export class GridLayout extends PureContainer {
 	declareData() {
 		return super.declareData(...arguments, {
 			rows: undefined,
-			columns: undefined
+			columns: undefined,
+			minScale: undefined
 		});
 	}
 
@@ -169,6 +170,9 @@ class Grid extends VDOM.Component {
 			Math.min(unitWidth, unitHeight, 25)
 		));
 		let scale = (this.scale = unitSize / 25);
+
+		if (data.minScale > 0 && scale < data.minScale)
+			scale = data.minScale;
 
 		//this.gridEl.style.width = `${data.columns * unitSize}px`;
 		//this.gridEl.style.height = `${data.rows * unitSize}px`;
