@@ -53,8 +53,15 @@ class PageControlller extends Controller {
                     height: 40,
                     ...w
                 });
-                if (!isNonEmptyArray(w.widgets))
-                    this.store.set('$page.add', true);
+                if (!isNonEmptyArray(w.widgets)) {
+                    if (this.store.set('$page.add', true)) {
+                        Toast.create({
+                            children: 'Drag & drop widgets from the right sidebar on the board.',
+                            timeout: 5000,
+                            mod: "primary"
+                        }).open();
+                    }
+                }
             }
         });
 

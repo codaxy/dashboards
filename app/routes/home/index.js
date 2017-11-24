@@ -46,7 +46,9 @@ export default (
                         <p ws>
                             <i>No dashboards in your inventory.</i>
                         </p>
-                        <LinkButton>Create new Dashboard</LinkButton>
+                        <LinkButton href="~/new">
+                            Create new Dashboard
+                        </LinkButton>
                     </div>
                 </FlexRow>
                 <br/>
