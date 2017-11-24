@@ -73,6 +73,19 @@ registerWidget(
 );
 
 registerWidget(
+    "btc-price-chart-bchain-info",
+    props => System.import("./btc-price-chart-bchain-info").then(x => x.default(props)),
+    {
+        description: "Bitcoin (BTC) price from blockhain.info",
+        box: {
+            width: 8,
+            height: 8,
+            class: "kpi"
+        }
+    }
+);
+
+registerWidget(
 	"btc-price-coindesk",
 	props => System.import("./btc-price-coindesk").then(x => x.default(props)),
 	{
