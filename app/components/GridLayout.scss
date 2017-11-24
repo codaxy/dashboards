@@ -1,15 +1,17 @@
 .cxb-gridlayout {
-  padding: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   font-size: 14px;
-  transition: margin 0.3s;
+  transition: margin 0.2s;
   background: gray;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  background-attachment: local;
+  will-change: margin;
+  touch-action: manipulation;
 
   &.cxs-scrollable {
     display: block;
@@ -18,15 +20,28 @@
     .cxe-gridlayout-grid {
       transform-origin: left top;
     }
+
+    .cxe-gridlayout-clip {
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
   }
+}
+
+.cxe-gridlayout-clip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cxe-gridlayout-grid {
   display: grid;
   background: rgba(white, 0.3);
   box-shadow: 0 0 2px rgba(black, 0.2);
-  transition: transform 0.3s;
+  transition: transform 0.2s;
   flex: 0 0 auto;
+  //will-change: transform;
 }
 
 .cxe-gridlayout-drop-marker {

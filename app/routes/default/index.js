@@ -224,7 +224,7 @@ export default (
                 <GridLayout
                     rows:bind="$page.dashboard.height"
                     columns:bind="$page.dashboard.width"
-                    minScale:expr="{$page.add} ? 0.5 : 0.75"
+                    minScale:expr="{$page.add} ? 0 : 0.75"
                     onDrop="onWidgetDrop"
                     style={{
                         flex: "1 1 0%",
