@@ -40,12 +40,16 @@ export default (
                             href:tpl="~/{$record.id}"
                             text:tpl="{$record.title}"
                             style="min-width: 200px"
-                         />
+                        />
                     </Repeater>
-                    <p visible:expr="!{dashboards.length}" ws>
-                        No dashboards in your inventory.
-                    </p>
+                    <div visible:expr="!{dashboards.length}">
+                        <p ws>
+                            <i>No dashboards in your inventory.</i>
+                        </p>
+                        <LinkButton>Create new Dashboard</LinkButton>
+                    </div>
                 </FlexRow>
+                <br/>
 
                 <h3>Samples</h3>
 

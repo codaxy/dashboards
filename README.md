@@ -39,7 +39,7 @@ npm run build
 
 ### Contributing
 
-We would be very happy to accepts PRs, especially for new widgets. Widgets are defined inside the `app/widgets` folder 
+PRs are welcome, especially for new widgets. Widgets are defined inside the `app/widgets` folder 
 and that is probably the best place to start experimenting with the app.  
 
 ### Deployment
@@ -49,5 +49,5 @@ using [Netlify](https://www.netlify.com/).
 
 ### License
 
-This project is licensed under MIT License, however, please note that [CxJS](https://cxjs.io) is free 
+Code of this project is licensed under MIT License, however, please note that [CxJS](https://cxjs.io) is free 
 for non-commercial projects only. 
