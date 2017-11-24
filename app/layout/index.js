@@ -2,6 +2,7 @@ import {
 	HtmlElement,
 	Link,
 	FlexRow,
+	LinkButton,
 	CxCredit,
 	Repeater,
 	enableTooltips
@@ -41,7 +42,7 @@ export default (
 				<ContentPlaceholder name="tools" />
 			</header>
 			<aside class="aside">
-				<h1>Dashboards</h1>
+				<h1><Link href="~/">Dashboards</Link></h1>
 				<dl style="flex: 1 1 0%; overflow: auto">
 					<dt>
 						<Link href="~/new" url:bind="url">
@@ -55,10 +56,13 @@ export default (
 					</dt>
 					<Repeater records:bind="dashboards">
 						<dd>
-							<Link
-								href:tpl="~/{$record.id}"
+							<LinkButton
+								mod="hollow"
+								icon="dashboard"
 								url:bind="url"
-								text:bind="$record.title"
+								href:tpl="~/{$record.id}"
+								text:tpl="{$record.title}"
+								style="min-width: 200px"
 							/>
 						</dd>
 					</Repeater>

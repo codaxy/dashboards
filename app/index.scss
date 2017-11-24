@@ -4,6 +4,8 @@ $cx-default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
 
 @import "~cx-theme-aquamarine/src/variables";
 
+$link-color: darken($cx-theme-primary-color-dark, 10);
+
 $cx-element-style-map: cx-deep-map-merge($cx-element-style-map, (
   body: (
     background: #eeeeee
@@ -12,7 +14,7 @@ $cx-element-style-map: cx-deep-map-merge($cx-element-style-map, (
     font-weight: 500
   ),
   a: (
-    color: darken($cx-theme-primary-color-dark, 10)
+    color: $link-color
   )
 ));
 @import "~cx-theme-aquamarine/src/index";

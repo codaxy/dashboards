@@ -1,39 +1,64 @@
-import { HtmlElement, LinkButton, Link, Section, FlexRow } from "cx/widgets";
+import {HtmlElement, LinkButton, Link, Section, FlexRow, Icon} from "cx/widgets";
 
 import Controller from "./Controller";
-import { Repeater } from "cx/ui";
+import {Repeater, VDOM} from "cx/ui";
+
+Icon.register('dashboard', (props) =>
+    <svg
+        viewBox="0 0 16 16"
+        {...props}
+    >
+        <path
+            fill="currentColor"
+            d="M1 1h4v4H1V1zM6 1h4v4H6V1zM11 1h4v4h-4V1zM1 6h9v4H1V6zM11 6h4v9h-4V6zM1 11h9v4H1v-4z"
+        />
+    </svg>
+);
 
 export default (
-	<cx>
-		<LinkButton href="~/new" mod="primary" putInto="tools">
-			New Dashboard
-		</LinkButton>
+    <cx>
+        <LinkButton href="~/new" mod="primary" putInto="tools">
+            New Dashboard
+        </LinkButton>
 
-		<h2 putInto="header">Home</h2>
+        <h2 putInto="header">Home</h2>
 
-		<div class="home">
-			<h3>My Dashboards</h3>
+        <FlexRow
+            controller={Controller}
+            align="center"
+            justify="center"
+            style="height: 100%"
+        >
+            <Section mod="card" class="home">
+                <h3>My Dashboards</h3>
 
-			<FlexRow controller={Controller} spacing wrap>
-				<Repeater records:bind="dashboards">
-					<Link
-						class="dashboard-card"
-						href:tpl="~/{$record.id}"
-						text:tpl="{$record.title}"
-					/>
-				</Repeater>
-				<p visible:expr="!{dashboards.length}" ws>
-					No dashboards in your inventory.
-				</p>
-			</FlexRow>
+                <FlexRow spacing wrap>
+                    <Repeater records:bind="dashboards">
+                        <LinkButton
+                            mod="hollow"
+                            icon="dashboard"
+                            href:tpl="~/{$record.id}"
+                            text:tpl="{$record.title}"
+                            style="min-width: 200px"
+                         />
+                    </Repeater>
+                    <p visible:expr="!{dashboards.length}" ws>
+                        No dashboards in your inventory.
+                    </p>
+                </FlexRow>
 
-			<h3>Samples</h3>
+                <h3>Samples</h3>
 
-			<FlexRow controller={Controller} spacing wrap>
-				<Link class="dashboard-card" href="~/lao6cfj">
-					Crypto
-				</Link>
-			</FlexRow>
-		</div>
-	</cx>
+                <FlexRow controller={Controller} spacing wrap>
+                    <LinkButton
+                        mod="hollow"
+                        icon="dashboard"
+                        href="~/lao6cfj"
+                        text="Crypto"
+                        style="min-width: 200px"
+                    />
+                </FlexRow>
+            </Section>
+        </FlexRow>
+    </cx>
 );

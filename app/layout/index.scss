@@ -1,4 +1,4 @@
-$header-color: #a73232;
+$header-color: $link-color;
 $aside-width: 260px;
 $small-device-width: 800px;
 
@@ -73,6 +73,14 @@ $header-height: 64px;
       text-transform: uppercase;
       font-size: 1.5rem;
       font-weight: 400;
+
+      a {
+         color: inherit;
+
+         &:hover {
+            text-decoration: none;
+         }
+      }
    }
 
    dt {
@@ -80,10 +88,16 @@ $header-height: 64px;
       font-weight: 500;
    }
 
-   dl .cxb-link {
-      padding: 0.5rem;
-      display: block;
-      color: inherit;
+   dl {
+      a {
+         text-transform: uppercase;
+      }
+   }
+
+   dl .cxb-button {
+      //padding: 0.5rem;
+      //display: block;
+      //color: inherit;
 
       &.cxs-active {
          color: $header-color;
@@ -132,7 +146,14 @@ p {
    //border-left: 3px solid #0677b9;
    border-top: 1px solid lightgray;
    position: relative;
-   text-align: center;
+
+   p {
+      margin: 2px 0;
+   }
+
+   strong {
+      font-size: 16px;
+   }
 
    img {
       border-radius: 50%;
