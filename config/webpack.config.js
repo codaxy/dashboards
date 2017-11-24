@@ -27,7 +27,13 @@ module.exports = {
         }]
     },
     entry: {
-        vendor: ['cx-react', p('app/polyfill.js')],
+        vendor: [
+            'cx-react',
+            p('app/polyfill.js'),
+            'firebase/app',
+            'firebase/database',
+            'firebase/auth'
+        ],
         app: [
            p('app/index.js')
         ]
