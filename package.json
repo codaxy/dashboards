@@ -22,7 +22,7 @@
   "homepage": "https://github.com/mstijak/dashboards#readme",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "cx": "^17.9.11",
+    "cx": "17.11.5",
     "cx-react": "^17.4.1",
     "cx-theme-aquamarine": "^17.9.0",
     "firebase": "^4.3.0",
