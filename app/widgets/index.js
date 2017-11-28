@@ -6,7 +6,7 @@ export function registerWidget(type, factory, defaultProps) {
 	props[type] = defaultProps;
 }
 
-export function createWidget(type, props) {
+export function createWidget(type, props = {}) {
 	let factory = widgets[type];
 
 	if (!factory) factory = removedWidgetFactory;

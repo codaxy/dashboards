@@ -10,6 +10,7 @@ const getIssues = repo =>
 
 export default class extends Controller {
 	onInit() {
+        this.repo = this.repo || 'codaxy/dashboards';
 		this.store.set("$data.repo", this.repo);
 		getIssues(this.repo).then(p => {
 			this.store.set("$data.issues", p);

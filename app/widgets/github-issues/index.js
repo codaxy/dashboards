@@ -5,11 +5,7 @@ enableCultureSensitiveFormatting();
 
 import { Repeater, ContentResolver } from "cx/widgets";
 
-const defaultProps = {
-	repo: "codaxy/cxjs"
-};
-
-export default ({ repo } = defaultProps) => (
+export default ({ repo }) => (
 	<cx>
 		<div class="kpi-header" ws controller={{ type: Controller, repo }}>
 			Recent Issues:
