@@ -197,10 +197,6 @@ export default (
                             value:bind="$page.dashboard.backgroundColor"
                             label="Background"
                         />
-                        <TextField
-                            value:bind="$page.dashboard.backgroundImgUrl"
-                            label="Image URL"
-                        />
                     </PureContainer>
                     <PureContainer layout={{type: LabelsTopLayout, vertical: true}}>
                         <Slider
@@ -225,6 +221,13 @@ export default (
                         />
                     </PureContainer>
                 </FlexRow>
+                <PureContainer layout={{type: LabelsTopLayout, vertical: true, mod: "stretch"}}>
+                    <TextField
+                        value:bind="$page.dashboard.backgroundImgUrl"
+                        label="Image URL"
+                        style="width: 100%"
+                    />
+                </PureContainer>
             </Window>
 
             <PureContainer controller={PageControlller}>

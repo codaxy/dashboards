@@ -1596,9 +1596,9 @@ cx-theme-aquamarine@^17.9.0:
   version "17.10.1"
   resolved "https://registry.yarnpkg.com/cx-theme-aquamarine/-/cx-theme-aquamarine-17.10.1.tgz#39452eff55e9afcb5917c69afc9903e0c7307a32"
 
-cx@^17.9.11:
-  version "17.11.4"
-  resolved "https://registry.yarnpkg.com/cx/-/cx-17.11.4.tgz#8094355376782a1deaa82f9418d22baf7447c3a7"
+cx@17.11.5:
+  version "17.11.5"
+  resolved "https://registry.yarnpkg.com/cx/-/cx-17.11.5.tgz#879ad298353ddf114e2e7e5ef08f2dd31f7c346d"
   dependencies:
     intl-io "^0.2.8"
     route-parser "^0.0.5"
