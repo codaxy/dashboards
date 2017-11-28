@@ -7,7 +7,7 @@ that are placed on the board. Widgets are simple to implement, so anyone can bui
 
 Front-end:
 * [CxJS](https://cxjs.io)
-* [React](https://https://facebook.github.io/react/)
+* [React](https://facebook.github.io/react/)
 * [Babel](https://babeljs.io/)
 * [webpack](https://webpack.js.org/)
 
