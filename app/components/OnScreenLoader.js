@@ -10,14 +10,6 @@ export class OnScreenLoader extends PureContainer {
 		if (instance.state.active) super.explore(context, instance);
 	}
 
-	prepare(context, instance) {
-		if (instance.state.active) super.prepare(context, instance);
-	}
-
-	cleanup(context, instance) {
-		if (instance.state.active) super.cleanup(context, instance);
-	}
-
 	render(context, instance, key) {
 		return (
 			<OnScreen key={key} instance={instance} data={instance.data}>
